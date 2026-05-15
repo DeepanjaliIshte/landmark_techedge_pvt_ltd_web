@@ -1,151 +1,196 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import altaroImage from "./img/altaro2.png";
 import bizplusLogo from "./img/Logo-bizpluscrm1.png";
 import trioImage from "./img/Trio-corporation.jpg";
 import logo from "./img/LTPLLogo.png";
-import client1 from "./img/client-1.png";
-import client2 from "./img/client-2.png";
-import client3 from "./img/client-3.png";
-import client4 from "./img/client-4.png";
-import client5 from "./img/client-5.png";
-import client6 from "./img/client-6.png";
 
-const clients = [client1, client2, client3, client4, client5, client6];
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
+const demoHref = "https://calendly.com/bizpluscrm/freedemo";
 
-const slides = [
-  {
-    eyebrow: "CRM + ERP Platform",
-    title: "BizPlusCRM",
-    text: "Transform business operations with a connected CRM and ERP platform for teams that need visibility, speed, and control.",
-    primary: "Book an Appointment",
-    primaryHref: "https://calendly.com/bizpluscrm/freedemo",
-    secondary: "Free Trial",
-    image: bizplusLogo,
-    tone: "blue",
-  },
-  {
-    eyebrow: "Immutable Backup",
-    title: "Ransomware protection for critical VM data",
-    text: "Secure Hyper-V and VMware workloads with fast backup, replication, immutable cloud storage, and human 24/7 support.",
-    primary: "Download Free Trial",
-    primaryHref: "#contact",
-    secondary: "Explore Altaro",
-    image: altaroImage,
-    tone: "green",
-  },
-  {
-    eyebrow: "Hospital Management",
-    title: "TRIO HIMS",
-    text: "A trusted hospital information management system built to simplify operational tasks and healthcare automation.",
-    primary: "Book a Free Demo",
-    primaryHref: "#contact",
-    secondary: "More Info",
-    image: trioImage,
-    tone: "amber",
-  },
-  {
-    eyebrow: "Microsoft 365 Backup",
-    title: "Microsoft 365 backup is a must",
-    text: "Avoid accidental loss and ransomware risk by backing up company Microsoft 365 data with a dedicated protection strategy.",
-    primary: "Start 30-Day Trial",
-    primaryHref: "#contact",
-    secondary: "How It Works",
-    image: altaroImage,
-    tone: "violet",
-  },
+const trustPoints = [
+  { title: "20+ Years", text: "Industry Experience", icon: "icon-star" },
+  { title: "ERP & SaaS", text: "Software Company", icon: "icon-building" },
+  { title: "Serving Businesses", text: "Across India", icon: "icon-users" },
+  { title: "Dedicated Support &", text: "Implementation Team", icon: "icon-headset" },
+];
+
+const heroIndustries = [
+  { title: "Manufacturing", icon: "icon-factory" },
+  { title: "Healthcare", icon: "icon-health-outline" },
+  { title: "Education", icon: "icon-education" },
+  { title: "Retail", icon: "icon-retail" },
+  { title: "Services", icon: "icon-briefcase" },
+  { title: "Logistics", icon: "icon-logistics" },
+  { title: "Others", icon: "icon-grid-four" },
 ];
 
 const products = [
+ 
   {
-    name: "Altaro Backup Software",
-    label: "Backup and Replication",
-    image: altaroImage,
-    body: "Award-winning virtual machine backup and replication for Hyper-V and VMware environments, designed for IT teams, resellers, consultants, and MSPs.",
-    points: ["WAN-Optimized Replication", "Continuous Data Protection", "Augmented Inline Deduplication", "24/7 support"],
-    action: "Download Trial Version",
+    name: "BizPlus CRM",
+    label: "CRM & Sales Automation Software",
+    image: bizplusLogo,
+    body:
+      "BizPlus CRM helps businesses manage leads, customer interactions, sales follow-ups, quotations, and customer relationships from a single platform. Improve sales productivity, automate communication, and manage your sales pipeline efficiently.",
+    points: ["Lead Management", "Sales Tracking", "Follow-ups", "Customer Management", "Multi-user Access"],
+    action: "Book Free Demo",
+    href: demoHref,
   },
   {
-    name: "BIZPLUS CRM",
-    label: "CRM and ERP",
-    image: bizplusLogo,
-    body: "A customer relationship management platform for managing client interactions, sales activity, engagement tracking, and actionable business data.",
-    points: ["Customer management", "Sales tracking", "Multi-user workflows", "Business automation"],
-    action: "Book an Appointment",
+    name: "Altaro Backup Software",
+    label: "Enterprise Backup & Recovery Solution",
+    image: altaroImage,
+    body:
+      "Altaro VM Backup is a reliable backup and replication solution for VMware and Hyper-V environments. Trusted by thousands of businesses worldwide, it helps organizations secure their virtual environments with faster backup, disaster recovery, and continuous data protection.",
+    points: ["VM Backup", "Replication", "Disaster Recovery", "Continuous Data Protection", "24/7 Support"],
+    action: "Start Free Trial",
+    href: "#contact",
   },
   {
     name: "TRIO HIMS",
-    label: "Healthcare Automation",
+    label: "Healthcare Information Management Software",
     image: trioImage,
-    body: "Healthcare information management software that helps hospitals move from paperwork to a reliable digital workflow for daily operations.",
-    points: ["Hospital operations", "Digital records", "Secure data handling", "Patient-care focus"],
+    body:
+      "TRIO HIMS is an advanced hospital and healthcare management solution developed to simplify hospital operations, patient management, billing, records management, and healthcare workflows through a secure digital platform.",
+    points: ["Hospital Management", "Patient Records", "Billing", "Administration", "Digital Healthcare Operations"],
     action: "Start Free Trial",
+    href: "#contact",
+  },
+   {
+    name: "BizPlus ERP",
+    label: "Complete Manufacturing ERP Software",
+    image: bizplusLogo,
+    body:
+      "Manage your entire manufacturing and business operations from one centralized ERP platform. BizPlus ERP helps businesses streamline CRM, quotation, production planning, BOM, inventory, warehouse, dispatch, accounting, and after-sales processes with improved efficiency and visibility.",
+    points: ["CRM", "Production", "BOM", "Job Cards", "Inventory", "Dispatch", "AMC", "Accounting"],
+    action: "Request ERP Demo",
+    href: demoHref,
   },
 ];
 
-const innovationFeatures = [
+const whyChooseUs = [
   {
-    icon: "icon-backup",
-    value: "50,000+",
-    title: "Backup users worldwide",
-    text: "Resilient VM protection with replication, immutable cloud storage, and recovery-ready operations.",
-  },
-  {
-    icon: "icon-support",
-    value: "30 sec",
-    title: "Fast support response",
-    text: "Human assistance for critical issues, so teams are not stuck when business continuity matters.",
-  },
-  {
-    icon: "icon-stack",
-    value: "3+",
-    title: "Business product lines",
-    text: "CRM, backup, and healthcare systems supported by services across IVR, AI-ML, and automation.",
-  },
-  {
+    title: "Industry Experience",
     icon: "icon-clock",
-    value: "24/7",
-    title: "Technology support",
-    text: "Always-available support coverage for active operations, deployments, and service continuity.",
+    text:
+      "With more than 20 years of experience in the software industry, we understand the operational challenges businesses face and deliver practical technology solutions that improve efficiency and business growth.",
+  },
+  {
+    title: "Complete Business Automation",
+    icon: "icon-stack",
+    text:
+      "Our solutions cover multiple business operations including CRM, production, inventory, sales, dispatch, customer management, healthcare operations, and data security all from integrated and scalable platforms.",
+  },
+  {
+    title: "Customized & Scalable Solutions",
+    icon: "icon-ai",
+    text:
+      "We provide flexible software solutions designed to fit businesses of different sizes and industries, ensuring smooth implementation and long-term scalability.",
+  },
+  {
+    title: "Dedicated Support & Implementation",
+    icon: "icon-support",
+    text:
+      "Our experienced support and implementation team ensures smooth onboarding, training, technical assistance, and continuous support for all clients.",
+  },
+  {
+    title: "Trusted Technology Partner",
+    icon: "icon-backup",
+    text:
+      "Businesses across manufacturing, healthcare, SMEs, and service industries trust Landmark Techedge for reliable software solutions and long-term technology partnership.",
+  },
+  {
+    title: "Transparent Delivery Process",
+    icon: "icon-ivr",
+    text:
+      "We keep implementation, training, and support communication clear at every stage so teams know what is happening and when to expect results.",
   },
 ];
 
-const services = [
-  { name: "AI-ML", icon: "icon-ai", accent: "Predictive automation" },
-  { name: "IVR", icon: "icon-ivr", accent: "Smart call flows" },
-  { name: "Distributor / Reseller", icon: "icon-channel", accent: "Partner enablement" },
-  { name: "Managed backup", icon: "icon-backup", accent: "Recovery readiness" },
-  { name: "CRM consulting", icon: "icon-crm", accent: "Customer operations" },
-  { name: "Healthcare automation", icon: "icon-health", accent: "Digital workflows" },
+const strengths = [
+  "20+ Years Industry Experience",
+  "ERP & CRM Specialists",
+  "Manufacturing & Healthcare Solutions",
+  "Reliable Technical Support",
+  "Scalable SaaS Solutions",
+  "Customer-Focused Approach",
 ];
 
-function CheckList({ items }: { items: string[] }) {
-  return (
-    <ul className="check-list">
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  );
-}
+const industries = [
+  {
+    title: "Manufacturing Industry",
+    icon: "icon-stack",
+    text:
+      "Manage production planning, BOM, inventory, job cards, dispatch, and business operations efficiently with powerful manufacturing ERP solutions.",
+  },
+  {
+    title: "Healthcare & Hospitals",
+    icon: "icon-health",
+    text:
+      "Digitize healthcare operations with secure hospital management software for patient records, billing, administration, and healthcare workflows.",
+  },
+  {
+    title: "SMEs & Enterprises",
+    icon: "icon-crm",
+    text:
+      "Simplify customer management, sales tracking, inventory, and daily business operations with scalable ERP and CRM solutions.",
+  },
+  {
+    title: "Distributors & Trading Businesses",
+    icon: "icon-channel",
+    text:
+      "Track sales, quotations, inventory, warehouse, and dispatch operations from one centralized business management platform.",
+  },
+  {
+    title: "Service-Based Businesses",
+    icon: "icon-support",
+    text:
+      "Improve customer communication, follow-ups, support management, and operational efficiency with CRM and automation tools.",
+  },
+  {
+    title: "IT & Technology Companies",
+    icon: "icon-backup",
+    text:
+      "Secure business data, streamline workflows, and improve operational productivity with backup and software management solutions.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "BizPlus ERP helped us streamline our complete manufacturing process including production planning, inventory tracking, BOM management, and dispatch operations. The software improved our operational efficiency significantly.",
+    name: "Rajesh Sharma",
+    role: "Operations Head – Manufacturing Company",
+  },
+  {
+    quote:
+      "The CRM solution made it easier for our sales team to manage leads, customer follow-ups, and quotations from one platform. It improved our response time and customer management process.",
+    name: "Amit Verma",
+    role: "Sales Manager – SME Business",
+  },
+  {
+    quote:
+      "TRIO HIMS simplified our hospital management operations and reduced paperwork completely. Patient records, billing, and administration are now managed digitally with better accuracy.",
+    name: "Dr. Neha Kulkarni",
+    role: "Healthcare Administrator",
+  },
+  {
+    quote:
+      "The implementation team provided excellent support throughout the deployment process. The software is user-friendly, reliable, and helped us improve business productivity.",
+    name: "Sandeep Patil",
+    role: "Director – Trading & Distribution Company",
+  },
+  {
+    quote:
+      "Altaro Backup Software helped us secure our virtual infrastructure with reliable backup and disaster recovery solutions. The setup and support experience was excellent.",
+    name: "Rohit Mehta",
+    role: "IT Manager – Technology Company",
+  },
+];
 
 export default function Page() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const current = slides[activeSlide];
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveSlide((index) => (index + 1) % slides.length);
-    }, 5200);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
   return (
     <main>
-      <div className="topbar">
+     {/*<div className="topbar">
         <div>
           <a href="tel:+917030323838">+91 70303 23838</a>
           <a href="tel:+919921388999">+91 99213 88999</a>
@@ -156,7 +201,7 @@ export default function Page() {
           <a href="https://x.com/LTechedge">X</a>
           <a href="https://in.linkedin.com/company/landmark-techedge-pvt-ltd">LinkedIn</a>
         </div>
-      </div>
+      </div>*/}
 
       <header className="site-header">
         <a className="brand" href="https://landmarksol.com/" aria-label="LandMark TechEdge home">
@@ -164,99 +209,91 @@ export default function Page() {
         </a>
         <nav className="site-nav" aria-label="Primary navigation">
           <a href="#home">Home</a>
+          <a href="/services">Services</a>
+          <a href="/about">About Us</a>
           <a href="#products">Products</a>
-          <a href="#clients">Clients</a>
+          <a href="#industries">Industries</a>
           <a href="#contact">Contact</a>
-          <a className="nav-cta" href={whatsappHref}>WhatsApp</a>
+          <a className="nav-cta" href={whatsappHref}>
+            <span className="nav-whatsapp-icon" aria-hidden="true" />
+            WhatsApp
+          </a>
         </nav>
       </header>
 
-      <section id="home" className={`hero hero-${current.tone}`}>
+      <section id="home" className="hero hero-blue">
         <div className="hero-orbits" aria-hidden="true">
           <span />
           <span />
           <span />
         </div>
         <div className="hero-grid">
-          <div className="hero-copy" key={current.title}>
-            <span className="eyebrow">{current.eyebrow}</span>
-            <h1>{current.title}</h1>
-            <p>{current.text}</p>
+          <div className="hero-copy">
+            <span className="eyebrow">Trusted Software & Technology Solutions Since 2003</span>
+            <h1>Empowering Businesses with Smart ERP, CRM & SaaS Solutions</h1>
+            <p>
+              Landmark Techedge Pvt. Ltd. helps businesses streamline operations with powerful software solutions for CRM,
+              ERP, manufacturing, hospital management, backup, and business automation. We deliver scalable technology
+              solutions designed for growth, productivity, and digital transformation.
+            </p>
             <div className="hero-actions">
-              <a className="button button-primary" href={current.primaryHref}>
-                {current.primary}
+              <a className="button button-tertiary" href="#products">
+                <span className="button-icon icon-trial" aria-hidden="true" />
+                Start Free Trial
               </a>
-              <a className="button button-secondary" href={whatsappHref}>
-                Chat on WhatsApp
+              <a className="button button-primary" href="#contact">
+                <span className="button-icon icon-calendar" aria-hidden="true" />
+                Book Free Demo
+              </a>
+              <a className="button button-secondary" href={demoHref}>
+                <span className="button-icon icon-screen" aria-hidden="true" />
+                Request ERP Demo
               </a>
             </div>
-            <div className="hero-proof" aria-label="Business highlights">
-              <span>CRM</span>
-              <span>Backup</span>
-              <span>HIMS</span>
-              <span>IVR</span>
-              <span>AI-ML</span>
+            <div className="hero-trust" aria-label="Trust points">
+              {trustPoints.map((point) => (
+                <span key={point.title} className="trust-pill">
+                  <span className={`trust-icon ${point.icon}`} aria-hidden="true" />
+                  <span>
+                    <strong>{point.title}</strong>
+                    {point.text}
+                  </span>
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className="hero-visual" key={`${current.title}-visual`}>
+          <div className="hero-visual">
             <div className="visual-ring" aria-hidden="true" />
             <div className="visual-card">
-              <img src={current.image.src} alt={current.title} />
+              <img src={logo.src} alt="LandMark TechEdge logo" />
             </div>
             <div className="floating-stat stat-a">
-              <strong>50k+</strong>
-              businesses
+              <strong>20+</strong>
+              years experience
             </div>
             <div className="floating-stat stat-b">
-              <strong>24/7</strong>
-              support
+              <strong>4</strong>
+              core product lines
             </div>
           </div>
         </div>
-
-        <div className="slide-controls" aria-label="Hero slider controls">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.title}
-              className={index === activeSlide ? "active" : ""}
-              onClick={() => setActiveSlide(index)}
-              type="button"
-              aria-label={`Show ${slide.title}`}
-            />
-          ))}
-        </div>
       </section>
 
-      <section className="intro-band">
-        <div>
-          <span className="eyebrow">LandMark TechEdge</span>
-          <h2>Practical software for backup, CRM, healthcare, IVR, AI, and digital operations.</h2>
-        </div>
-        <p>
-          We help organizations adopt dependable technology platforms that improve customer
-          management, data protection, healthcare workflows, and everyday business continuity.
-        </p>
-      </section>
+      
 
-      <section className="impact-strip" aria-label="Company highlights">
-        {innovationFeatures.map((feature) => (
-          <article className="impact-card" key={feature.title}>
-            <span className={`feature-icon ${feature.icon}`} aria-hidden="true" />
-            <strong>{feature.value}</strong>
-            <h3>{feature.title}</h3>
-            <p>{feature.text}</p>
-          </article>
-        ))}
-      </section>
 
       <section id="products" className="products">
         <div className="section-heading">
-          <span className="eyebrow">Our Products</span>
-          <h2>Solutions designed for real operational work</h2>
+          <span className="eyebrow">OUR PRODUCTS</span>
+          <h2>Smart Software Solutions for Modern Businesses</h2>
+          <p>
+            Landmark Techedge Pvt. Ltd. provides powerful ERP, CRM, healthcare, backup, and automation solutions designed
+            to simplify business operations, improve productivity, and support business growth across multiple industries.
+          </p>
         </div>
 
-        <div className="product-stack">
+        <div className="product-stack product-slider">
           {products.map((product, index) => (
             <article className={`product-card product-card-${index + 1}`} key={product.name}>
               <div className="product-index">0{index + 1}</div>
@@ -270,12 +307,11 @@ export default function Page() {
                 <h3>{product.name}</h3>
                 <p>{product.body}</p>
                 <div className="product-chips">
-                  <b>Secure</b>
-                  <b>Scalable</b>
-                  <b>Supported</b>
+                  {product.points.map((point) => (
+                    <b key={point}>{point}</b>
+                  ))}
                 </div>
-                <CheckList items={product.points} />
-                <a className="text-link" href={index === 1 ? "https://calendly.com/bizpluscrm/freedemo" : "#contact"}>
+                <a className="text-link" href={product.href}>
                   {product.action}
                 </a>
               </div>
@@ -284,59 +320,148 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="services">
+      <section className="why-choose-us">
         <div className="section-heading">
-          <span className="eyebrow">More Capabilities</span>
-          <h2>Technology support around your business stack</h2>
+          <span className="eyebrow">WHY CHOOSE US</span>
+          <h2>Delivering Reliable Software Solutions Since 2003</h2>
+          <p>
+            At Landmark Techedge Pvt. Ltd., we help businesses streamline operations with powerful ERP, CRM, healthcare,
+            and business automation solutions tailored to modern industry requirements.
+          </p>
         </div>
-        <div className="service-grid">
-          {services.map((item) => (
-            <div className="service-tile" key={item.name}>
+
+        <div className="why-grid">
+          {whyChooseUs.map((item) => (
+            <article className="why-card" key={item.title}>
               <span className={`feature-icon ${item.icon}`} aria-hidden="true" />
-              <small>{item.accent}</small>
-              <h3>{item.name}</h3>
-              <p>Focused implementation, support, and advisory services from LandMark TechEdge.</p>
-            </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
           ))}
+        </div>
+
+        <div className="strengths-panel">
+          <h3>Our Strengths</h3>
+          <div className="strengths-list" aria-label="Our strengths">
+            {strengths.map((strength) => (
+              <span key={strength}>{strength}</span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="clients" className="clients">
-        <div className="section-heading">
-          <span className="eyebrow">Our Clients</span>
-          <h2>Trusted by growing teams and institutions</h2>
+      <section className="homepage-cta">
+        <div className="homepage-cta-content">
+          
+          <h2>Ready to Transform Your Business Operations?</h2>
+          <p>
+            Streamline your workflow with smart ERP, CRM, and business automation solutions from Landmark Techedge Pvt. Ltd.
+          </p>
+          <div className="cta-buttons">
+            <a href="#contact" className="button button-primary">
+              Book Free Demo
+            </a>
+            <a href="#contact" className="button button-secondary">
+              Contact Our Team
+            </a>
+          </div>
         </div>
-        <div className="client-marquee">
-          {[...clients, ...clients].map((client, index) => (
-            <img src={client.src} alt={`Client ${index + 1}`} key={`${client.src}-${index}`} />
+      </section>
+
+      <section id="industries" className="services">
+        <div className="section-heading">
+          <span className="eyebrow">INDUSTRIES WE SERVE</span>
+          <h2>Software Solutions Designed for Multiple Industries</h2>
+          <p>
+            Landmark Techedge Pvt. Ltd. delivers industry-focused ERP, CRM, healthcare, and automation solutions that help
+            businesses improve efficiency, streamline operations, and accelerate growth.
+          </p>
+        </div>
+        <div className="service-grid industry-grid">
+          {industries.map((item) => (
+            <div className="service-tile industry-card" key={item.title}>
+              <span className={`feature-icon ${item.icon}`} aria-hidden="true" />
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="strengths-panel">
+          <h3>Industries Covered</h3>
+          <div className="strengths-list" aria-label="Industries covered">
+            <span>Manufacturing</span>
+            <span>Healthcare</span>
+            <span>SMEs</span>
+            <span>Trading Businesses</span>
+            <span>Distributors</span>
+            <span>Service Industries</span>
+            <span>IT Companies</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="homepage-cta">
+        <div className="homepage-cta-content">
+          <span className="eyebrow">CTA SECTION</span>
+          <h2>Looking for Industry-Specific Software Solutions?</h2>
+          <p>
+            Our team helps businesses choose the right ERP, CRM, and automation solutions based on their industry requirements.
+          </p>
+          <div className="cta-buttons">
+            <a href={demoHref} className="button button-primary">
+              Talk to Our Experts
+            </a>
+            <a href="#contact" className="button button-secondary">
+              Request Free Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="testimonials">
+        <div className="section-heading">
+          <span className="eyebrow">CLIENT TESTIMONIALS</span>
+          <h2>Trusted by Businesses Across Multiple Industries</h2>
+          <p>
+            See what our clients say about the software solutions and support provided by Landmark Techedge Pvt. Ltd.
+          </p>
+        </div>
+        <div className="testimonial-slider">
+          {testimonials.map((item) => (
+            <article className="testimonial-card" key={item.name}>
+              <p>“{item.quote}”</p>
+              <h3>{item.name}</h3>
+              <small>{item.role}</small>
+            </article>
           ))}
         </div>
       </section>
 
       <section id="contact" className="contact">
         <div className="section-heading">
-          <span className="eyebrow">Contact</span>
-          <h2>Start a conversation with our team</h2>
+          <span className="eyebrow">Take the Next Step Towards Business Automation</span>
+          <h2>Schedule Your Free Demo Today</h2>
+          <p>Book a call and explore how our software can support your team, customers, and daily operations.</p>
         </div>
         <div className="contact-grid">
           <div className="contact-panel">
             <div>
-              <h3>Location</h3>
-              <p>Dhruta Complex, Office 104 & 105, Narayan Peth, Pune, Maharashtra.</p>
-            </div>
-            <div>
-              <h3>Contact Us</h3>
+              <h3>Contact Information</h3>
               <p>
-                <a href="tel:+917030323838">+91 70303 23838</a>
+                <a href="tel:+917030323838">📞 +91 70303 23838</a>
                 <br />
-                <a href="tel:+919921388999">+91 99213 88999</a>
+                <a href="mailto:info@bizpluserp.com">📧 info@bizpluserp.com</a>
               </p>
             </div>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.307581162119!2d73.84057107703!3d18.51499762444613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c151e106c94d%3A0x15033b3fb4b0f620!2sDhruta%20Complex!5e0!3m2!1sen!2sin!4v1737194392520"
-              title="LandMark TechEdge location"
-              loading="lazy"
-            />
+            <div className="contact-actions">
+              <a className="button button-primary" href={demoHref}>
+                Book Free Demo
+              </a>
+              <a className="button button-secondary" href={whatsappHref}>
+                Talk to Our Experts
+              </a>
+            </div>
           </div>
 
           <form className="contact-form">
@@ -349,8 +474,8 @@ export default function Page() {
               <input type="email" name="email" required />
             </label>
             <label>
-              Subject
-              <input type="text" name="subject" required />
+              Your Company
+              <input type="text" name="company" required />
             </label>
             <label>
               Message
@@ -366,9 +491,9 @@ export default function Page() {
       <footer className="footer">
         <h2>LandMark TechEdge</h2>
         <div>
-          <a href="Privacy.html">Privacy Policy</a>
-          <a href="Terms.html">Terms & Conditions</a>
-          <a href="Refund.html">Refund Policy</a>
+          <a href="/Privacy.html">Privacy Policy</a>
+          <a href="/Terms.html">Terms & Conditions</a>
+          <a href="/Refund.html">Refund Policy</a>
         </div>
         <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
       </footer>
