@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 
-const bodyFont = Plus_Jakarta_Sans({
+const bodyFont = Inter({
   subsets: ["latin"],
   variable: "--font-body",
 });
 
-const headingFont = Space_Grotesk({
+const headingFont = Poppins({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-heading",
 });
