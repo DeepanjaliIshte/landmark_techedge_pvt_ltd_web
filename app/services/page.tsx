@@ -1,6 +1,6 @@
 "use client";
 
-import logo from "../img/LTPLLogo.png";
+import SiteHeader from "../components/SiteHeader";
 import mobileAppImg from "../img/MobileApp.jpg";
 import webdevImg from "../img/webdev.jpg";
 import softdevImg from "../img/softdev.jpg";
@@ -68,20 +68,7 @@ export default function ServicesPage() {
       </div>
       */}
 
-      <header className="site-header">
-        <a className="brand" href="https://landmarksol.com/" aria-label="LandMark TechEdge home">
-          <img src={logo.src} alt="LandMark TechEdge" />
-        </a>
-        <nav className="site-nav" aria-label="Primary navigation">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/#products">Products</a>
-          <a href="/#industries">Industries</a>
-          <a href="/services">Services</a>
-          <a href="/#contact">Contact</a>
-          <a className="nav-cta" href={whatsappHref}>WhatsApp</a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section className="services-hero">
         <div className="services-hero-content">
