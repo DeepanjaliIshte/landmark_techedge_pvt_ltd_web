@@ -1,7 +1,7 @@
 "use client";
 
 import logo from "../img/LTPLLogo.png";
-import bizplusLogo from "../img/Logo-bizpluscrm1.png";
+import bizplusLogo from "../img/bizplus ERP.png";
 import SiteHeader from "../components/SiteHeader";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";

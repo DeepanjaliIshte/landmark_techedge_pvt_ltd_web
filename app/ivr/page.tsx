@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import logo from "../img/LTPLLogo.png";
 import ivrHeroImg from "../img/ivr_hero.png";
 import { useState, useEffect, useRef } from "react";
@@ -47,18 +48,55 @@ function FadeInSection(props: { children: React.ReactNode }) {
 }
 
 export default function IvrPage() {
+  const [navOpen, setNavOpen] = useState(false);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth > 900 && navOpen) setNavOpen(false);
+    }
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === "Escape") setNavOpen(false);
+    }
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [navOpen]);
+
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="/" aria-label="LandMark TechEdge home">
+        <Link className="brand" href="/" aria-label="LandMark TechEdge home" onClick={() => setNavOpen(false)}>
           <img src={logo.src} alt="LandMark TechEdge" />
-        </a>
-        <nav className="site-nav" aria-label="Primary navigation">
-          <a href="/">Home</a>
-          <a href="/services">Services</a>
-          <a href="/ai-ml">AI & ML</a>
-          <a href="#contact">Contact</a>
-          <a className="nav-cta" href={whatsappHref}>WhatsApp</a>
+        </Link>
+
+        <button
+          className="nav-toggle"
+          aria-controls="ivr-navigation"
+          aria-expanded={navOpen}
+          onClick={() => setNavOpen((open) => !open)}
+          aria-label={navOpen ? "Close menu" : "Open menu"}
+        >
+          <span className="bar" aria-hidden="true" />
+        </button>
+
+        <nav
+          id="ivr-navigation"
+          className={`site-nav ${navOpen ? "open" : ""}`}
+          aria-label="Primary navigation"
+        >
+          <Link href="/" onClick={() => setNavOpen(false)}>Home</Link>
+          <Link href="/#about" onClick={() => setNavOpen(false)}>About Us</Link>
+          <Link href="/#services" onClick={() => setNavOpen(false)}>Services</Link>
+          <Link href="/ai-ml" onClick={() => setNavOpen(false)}>AI &amp; ML</Link>
+          <Link href="/bizpluscrm" onClick={() => setNavOpen(false)}>BizPlusCRM</Link>
+          <Link href="/ivr" onClick={() => setNavOpen(false)}>IVR</Link>
+           <Link href="/bizpluserp" onClick={() => setNavOpen(false)}>BizPlusERP</Link>
+          <Link href="/altaro" onClick={() => setNavOpen(false)}>Altaro</Link>
+          <Link href="/#contact" onClick={() => setNavOpen(false)}>Contact</Link>
+          <a className="nav-cta" href={whatsappHref} onClick={() => setNavOpen(false)}>WhatsApp</a>
         </nav>
       </header>
 

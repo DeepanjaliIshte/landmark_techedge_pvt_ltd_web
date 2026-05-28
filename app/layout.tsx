@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
-import ContactSection from "./components/ContactSection";
 
 const bodyFont = Inter({
   subsets: ["latin"],
@@ -24,7 +23,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${bodyFont.variable} ${headingFont.variable}`}>
         {children}
-        <ContactSection />
       </body>
     </html>
   );

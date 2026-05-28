@@ -3,6 +3,7 @@ import bizplusLogo from "./img/Logo-bizpluscrm1.png";
 import trioImage from "./img/Trio-corporation.jpg";
 import logo from "./img/LTPLLogo.png";
 import SiteHeader from "./components/SiteHeader";
+import ContactSection from "./components/ContactSection";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 const demoHref = "https://calendly.com/bizpluscrm/freedemo";
@@ -113,7 +114,6 @@ const strengths = [
   "Manufacturing & Healthcare Solutions",
   "Reliable Technical Support",
   "Scalable SaaS Solutions",
-  "Customer-Focused Approach",
 ];
 
 const industries = [
@@ -423,56 +423,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="contact" className="contact">
-        <div className="section-heading">
-          <span className="eyebrow">Take the Next Step Towards Business Automation</span>
-          <h2>Schedule Your Free Demo Today</h2>
-          <p>Book a call and explore how our software can support your team, customers, and daily operations.</p>
-        </div>
-        <div className="contact-grid">
-          <div className="contact-panel">
-            <div>
-              <h3>Contact Information</h3>
-              <p>
-                <a href="tel:+917030323838">📞 +91 70303 23838</a>
-                <br />
-                <a href="mailto:info@bizpluserp.com">📧 info@bizpluserp.com</a>
-              </p>
-            </div>
-            <div className="contact-actions">
-              <a className="button button-primary" href={demoHref}>
-                Book Free Demo
-              </a>
-              <a className="button button-secondary" href={whatsappHref}>
-                Talk to Our Experts
-              </a>
-            </div>
-          </div>
-
-          <form className="contact-form">
-            <label>
-              Your Name
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              Your Email
-              <input type="email" name="email" required />
-            </label>
-            <label>
-              Your Company
-              <input type="text" name="company" required />
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows={7} required />
-            </label>
-            <button className="button button-primary" type="submit">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
-
+      <ContactSection />
       <footer className="footer">
         <h2>LandMark TechEdge</h2>
         <div>

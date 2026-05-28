@@ -1,5 +1,6 @@
 import altaroLogo from "../img/altaro2.png";
 import SiteHeader from "../components/SiteHeader";
+import ContactSection from "../components/ContactSection";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 
@@ -121,6 +122,8 @@ export default function AltaroPage() {
           </div>
         </div>
       </section>
+
+      <ContactSection />
 
       <footer className="footer">
         <h2>LandMark TechEdge</h2>

@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import logo from "../img/LTPLLogo.png";
 
-const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
-
 const altaroGroups = [
   {
     label: "Backup Solutions",
@@ -67,7 +65,6 @@ export default function SiteHeader() {
         <a href="/bizpluscrm" onClick={() => setOpen(false)}>BizPlusCRM</a>
         <a href="/ivr" onClick={() => setOpen(false)}>IVR</a>
         <a href="/bizpluserp" onClick={() => setOpen(false)}>BizPlus ERP</a>
-
         <div className="nav-dropdown">
           <a className="nav-dropdown-trigger" href="/altaro" aria-haspopup="true" onClick={() => setOpen(false)}>
             Altaro
@@ -91,12 +88,8 @@ export default function SiteHeader() {
             ))}
           </div>
         </div>
-
+        <a href="/reseller-program" onClick={() => setOpen(false)}>Reseller</a>
         <a href="/#contact" onClick={() => setOpen(false)}>Contact</a>
-        <a className="nav-cta" href={whatsappHref} onClick={() => setOpen(false)}>
-          <span className="nav-whatsapp-icon" aria-hidden="true" />
-          WhatsApp
-        </a>
       </nav>
     </header>
   );
