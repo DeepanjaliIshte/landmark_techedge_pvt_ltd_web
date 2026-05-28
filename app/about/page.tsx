@@ -1,6 +1,6 @@
 
 "use client";
-import logo from "../img/LTPLLogo.png";
+import SiteHeader from "../components/SiteHeader";
 import logo2 from "../img/LTPLNewLogo.png";
 import visionImg from "../img/Vision.jpg";
 import missionImg from "../img/mission1.webp";
@@ -13,20 +13,7 @@ export default function AboutPage() {
   return (
     <main>
     
-      <header className="site-header">
-        <a className="brand" href="https://landmarksol.com/" aria-label="LandMark TechEdge home">
-          <img src={logo.src} alt="LandMark TechEdge" />
-        </a>
-        <nav className="site-nav" aria-label="Primary navigation">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/#products">Products</a>
-          <a href="/#industries">Industries</a>
-          <a href="/#contact">Contact</a>
-          <a className="nav-cta" href={whatsappHref}>WhatsApp</a>
-        </nav>
-      </header>
+      <SiteHeader />
 
 
       <section className="about-hero">

@@ -2,6 +2,7 @@ import altaroImage from "./img/altaro2.png";
 import bizplusLogo from "./img/Logo-bizpluscrm1.png";
 import trioImage from "./img/Trio-corporation.jpg";
 import logo from "./img/LTPLLogo.png";
+import SiteHeader from "./components/SiteHeader";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 const demoHref = "https://calendly.com/bizpluscrm/freedemo";
@@ -203,23 +204,7 @@ export default function Page() {
         </div>
       </div>*/}
 
-      <header className="site-header">
-        <a className="brand" href="https://landmarksol.com/" aria-label="LandMark TechEdge home">
-          <img src={logo.src} alt="LandMark TechEdge" />
-        </a>
-        <nav className="site-nav" aria-label="Primary navigation">
-          <a href="#home">Home</a>
-          <a href="/services">Services</a>
-          <a href="/about">About Us</a>
-          <a href="#products">Products</a>
-          <a href="#industries">Industries</a>
-          <a href="#contact">Contact</a>
-          <a className="nav-cta" href={whatsappHref}>
-            <span className="nav-whatsapp-icon" aria-hidden="true" />
-            WhatsApp
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section id="home" className="hero hero-blue">
         <div className="hero-orbits" aria-hidden="true">
@@ -311,7 +296,7 @@ export default function Page() {
                     <b key={point}>{point}</b>
                   ))}
                 </div>
-                <a className="text-link" href={product.href}>
+                <a className="text-link" href={product.name.includes("Altaro") ? "/altaro" : product.href}>
                   {product.action}
                 </a>
               </div>
