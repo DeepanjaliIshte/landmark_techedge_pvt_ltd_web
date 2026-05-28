@@ -1,6 +1,7 @@
 :root {
   --ink: #0d1730;
   --muted: #667085;
+  --header-offset: 72px;
   --brand-light-red: #ffb3b8;
   --brand-light-blue: #cfe8ff;
   --line: rgba(148, 163, 184, 0.22);
@@ -22,6 +23,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* make room for the fixed header when jumping to anchors */
+  scroll-padding-top: var(--header-offset);
 }
 
 body {
@@ -35,6 +38,16 @@ body {
   font-family: var(--font-heading), "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial;
   font-size: 16px;
   line-height: 1.6;
+}
+
+/* prevent horizontal scroll caused by transformed elements */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure sections that are targeted by anchors are positioned below the fixed header */
+section {
+  scroll-margin-top: var(--header-offset);
 }
 
 h1,
@@ -132,6 +145,62 @@ img {
   gap: 18px;
   display: flex;
   align-items: center;
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  position: relative;
+}
+.nav-toggle .bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+/* Mobile nav: hide by default, show toggle */
+@media (max-width: 900px) {
+  .nav-toggle { display: inline-flex; }
+  .site-nav { 
+    position: fixed;
+    inset: var(--header-offset) 0 0 0; /* top, right, bottom, left */
+    background: rgba(255,255,255,0.98);
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 20px;
+    align-items: stretch;
+    box-shadow: 0 18px 40px rgba(15,23,42,0.08);
+    transform: translateY(-8px) scaleY(0.97);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+  }
+  .site-nav.open {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    visibility: visible;
+  }
+  .site-nav a { padding: 10px 8px; }
+  .nav-dropdown-menu { position: static; box-shadow: none; border: none; background: transparent; padding: 0; }
 }
 
 .site-nav a {
