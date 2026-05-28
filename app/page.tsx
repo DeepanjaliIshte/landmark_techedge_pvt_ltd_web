@@ -388,7 +388,6 @@ export default function Page() {
 
       <section className="homepage-cta">
         <div className="homepage-cta-content">
-          <span className="eyebrow">CTA SECTION</span>
           <h2>Looking for Industry-Specific Software Solutions?</h2>
           <p>
             Our team helps businesses choose the right ERP, CRM, and automation solutions based on their industry requirements.
