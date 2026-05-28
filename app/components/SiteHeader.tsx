@@ -34,7 +34,10 @@ export default function SiteHeader() {
         <a href="/">Home</a>
         <a href="/about">About Us</a>
         <a href="/services">Services</a>
-        <a href="/#products">Products</a>
+        <a href="/ai-ml">AI & ML</a>
+        <a href="/bizpluscrm">BizPlusCRM</a>
+        <a href="/ivr">IVR</a>
+        
         <div className="nav-dropdown">
           <a className="nav-dropdown-trigger" href="/altaro" aria-haspopup="true">
             Altaro
@@ -58,7 +61,7 @@ export default function SiteHeader() {
             ))}
           </div>
         </div>
-        <a href="/#industries">Industries</a>
+       
         <a href="/#contact">Contact</a>
         <a className="nav-cta" href={whatsappHref}>
           <span className="nav-whatsapp-icon" aria-hidden="true" />
