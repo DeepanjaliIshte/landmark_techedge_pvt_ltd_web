@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	experimental: {
-		devtoolSegmentExplorer: false,
-	},
+  output: "export",
+  basePath: "/landmark-Website",
+  images: {
+    unoptimized: true,
+  },
+  experimental: {
+    devtoolSegmentExplorer: false,
+  },
 };
 
 export default nextConfig;
