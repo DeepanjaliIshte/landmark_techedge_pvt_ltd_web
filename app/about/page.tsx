@@ -2,7 +2,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Users, Eye, Target } from "lucide-react";
-import SiteHeader from "../components/SiteHeader";
 import ContactSection from "../components/ContactSection";
 import "./about.css";
 
@@ -11,8 +10,8 @@ import logo2 from "../img/LTPLLogo.png";
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 
 const strengths = [
-  { value: "2014", label: "Founded in Pune" },
-  { value: "20+", label: "Years of delivery" },
+  { value: "2013", label: "Founded in Pune" },
+  { value: "13+", label: "Years of delivery" },
   { value: "360", label: "Software, support, and distribution" },
 ];
 
@@ -34,7 +33,6 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="creative-about-main">
-      <SiteHeader />
 
       {/* Hero Section */}
       <section className="creative-hero">
@@ -54,7 +52,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            Since 2014
+            Since 2013
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +121,7 @@ export default function AboutPage() {
             the almost entire gamut of IT services.
           </p>
           <p>
-            Established in 2003 and operates from Pune. Our Company is managed
+            Established in 2013 and operates from Pune. Our Company is managed
             by a group of professionals. We have grown to be a market leader in
             our verticals because of our ability to deliver products in a timely
             manner with quality service and technical support to our Clients,

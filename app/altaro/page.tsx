@@ -1,7 +1,6 @@
 "use client";
 
 import altaroLogo from "../img/altaro2.png";
-import SiteHeader from "../components/SiteHeader";
 import ContactSection from "../components/ContactSection";
 import FadeInSection from "../components/FadeInSection";
 import { motion, useReducedMotion } from "framer-motion";
@@ -81,7 +80,6 @@ export default function AltaroPage() {
 
   return (
     <main style={{ overflowX: "hidden", background: "#f8fafc" }}>
-      <SiteHeader />
 
       {/* Premium Hero Section */}
       <section className="hero hero-blue" style={{ background: "linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,0.5) 100%)" }}>

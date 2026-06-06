@@ -2,7 +2,6 @@
 
 import bizplusLogo from "../img/Logo-bizpluscrm1.png";
 import logo from "../img/LTPLLogo.png";
-import SiteHeader from "../components/SiteHeader";
 import { useState, useEffect, useRef } from "react";
 import { FeatureBentoGrid } from "./FeatureBentoGrid";
 import { PerformanceCarousel } from "./PerformanceCarousel";
@@ -55,11 +54,7 @@ function FadeInSection(props: { children: React.ReactNode }) {
 export default function BizplusPage() {
   const [videoError, setVideoError] = useState(false);
   return (
-    <main style={{ overflowX: "hidden" }}>
-      
-
-      <SiteHeader />
-
+    <main style={{ overflowX: "hidden" }}>
       <FadeInSection>
         <section className="hero hero-blue">
           <div className="hero-grid">

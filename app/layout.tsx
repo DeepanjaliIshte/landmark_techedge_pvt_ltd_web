@@ -6,10 +6,15 @@ export const metadata: Metadata = {
   description: "LandMark TechEdge products, backup solutions, CRM, HIMS, IVR, and technology services.",
 };
 
+import SiteHeader from "./components/SiteHeader";
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }

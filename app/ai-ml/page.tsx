@@ -48,57 +48,9 @@ function FadeInSection(props: { children: React.ReactNode }) {
 
 export default function AiMlPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
-  const [navOpen, setNavOpen] = useState(false);
-
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth > 900 && navOpen) setNavOpen(false);
-    }
-    function handleEscape(e: KeyboardEvent) {
-      if (e.key === "Escape") setNavOpen(false);
-    }
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("keydown", handleEscape);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [navOpen]);
 
   return (
     <main>
-      <header className="site-header">
-        <Link className="brand" href="/" aria-label="LandMark TechEdge home" onClick={() => setNavOpen(false)}>
-          <img src={logo.src} alt="LandMark TechEdge" />
-        </Link>
-
-        <button
-          className="nav-toggle"
-          aria-controls="ai-ml-navigation"
-          aria-expanded={navOpen}
-          onClick={() => setNavOpen((open) => !open)}
-          aria-label={navOpen ? "Close menu" : "Open menu"}
-        >
-          <span className="bar" aria-hidden="true" />
-        </button>
-
-        <nav
-          id="ai-ml-navigation"
-          className={`site-nav ${navOpen ? "open" : ""}`}
-          aria-label="Primary navigation"
-        >
-          <Link href="/" onClick={() => setNavOpen(false)}>Home</Link>
-          <Link href="/#about" onClick={() => setNavOpen(false)}>About Us</Link>
-          <Link href="/#services" onClick={() => setNavOpen(false)}>Services</Link>
-          <Link href="/ai-ml" onClick={() => setNavOpen(false)}>AI &amp; ML</Link>
-          <Link href="/bizpluscrm" onClick={() => setNavOpen(false)}>BizPlusCRM</Link>
-          <Link href="/ivr" onClick={() => setNavOpen(false)}>IVR</Link>
-          <Link href="/bizpluserp" onClick={() => setNavOpen(false)}>BizPlusERP</Link>
-          <Link href="/altaro" onClick={() => setNavOpen(false)}>Altaro</Link>
-          <Link href="/#contact" onClick={() => setNavOpen(false)}>Contact</Link>
-          <a className="nav-cta" href={whatsappHref} onClick={() => setNavOpen(false)}>WhatsApp</a>
-        </nav>
-      </header>
 
       {/* Hero Section */}
       <FadeInSection>

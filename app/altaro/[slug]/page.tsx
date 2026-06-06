@@ -2,7 +2,6 @@
 
 import { use } from "react";
 import altaroLogo from "../../img/altaro2.png";
-import SiteHeader from "../../components/SiteHeader";
 import Microsoft365BackupPage from "../Microsoft365BackupPage";
 import WindowsServerBackupPage from "../WindowsServerBackupPage";
 import FileServerBackupPage from "../FileServerBackupPage";
@@ -114,7 +113,6 @@ export default function AltaroSubPage(props: { params: Promise<{ slug: string }>
 
   return (
     <main style={{ overflowX: "hidden", background: "#f8fafc" }}>
-      <SiteHeader />
 
       <section className="hero hero-blue" style={{ background: "linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,0.5) 100%)", paddingBottom: '120px' }}>
         <div className="hero-grid" style={{ gridTemplateColumns: '1fr', textAlign: 'center' }}>

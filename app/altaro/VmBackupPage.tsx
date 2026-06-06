@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import SiteHeader from "../components/SiteHeader";
 import ContactSection from "../components/ContactSection";
 import { ChevronDown } from "lucide-react";
 
@@ -35,7 +34,6 @@ const VmBackupPage = () => {
 
   return (
     <main id="main" style={{ fontFamily: "'Open Sans', sans-serif", backgroundColor: "#f9f9f9", color: "#333", overflowX: "hidden" }}>
-      <SiteHeader />
 
       {/* Hero Spacer Section */}
       <section style={{ backgroundColor: "#0f172a", textAlign: "center", paddingBottom: "50px" }}>

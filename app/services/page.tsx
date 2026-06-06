@@ -1,6 +1,5 @@
 "use client";
 
-import SiteHeader from "../components/SiteHeader";
 import ContactSection from "../components/ContactSection";
 import mobileAppImg from "../img/MobileApp.jpg";
 import webdevImg from "../img/webdev.jpg";
@@ -16,7 +15,7 @@ const services = [
     description:
       "Customer-facing and internal mobile apps designed for smooth onboarding, daily use, and measurable business outcomes.",
     image: mobileAppImg.src,
-    tags: ["UI/UX", "APIs", "Analytics"],
+    tags: ["UI/UX ", "APIs ", "Analytics"],
   },
   {
     name: "Web Development",
@@ -73,7 +72,6 @@ const demoHref = "https://calendly.com/bizpluscrm/freedemo";
 export default function ServicesPage() {
   return (
     <main>
-      <SiteHeader />
 
       <section className="services-hero">
         <div className="services-hero-content">
@@ -95,9 +93,9 @@ export default function ServicesPage() {
           </div>
 
           <div className="services-hero-panel" aria-label="Service capabilities">
-            <span>Business Apps</span>
-            <span>Industrial IoT</span>
-            <span>AI Automation</span>
+            <span>Business Apps </span>
+            <span>Industrial IoT </span>
+            <span>AI Automation </span>
             <span>CRM / ERP</span>
           </div>
         </div>

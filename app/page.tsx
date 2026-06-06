@@ -5,14 +5,13 @@ import bizplusLogo from "./img/Logo-bizpluscrm1.png";
 import bizplusErpLogo from "./img/bizplus_erp.png";
 import trioImage from "./img/Trio-corporation.jpg";
 import logo from "./img/LTPLLogo.png";
-import SiteHeader from "./components/SiteHeader";
 import ContactSection from "./components/ContactSection";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 const demoHref = "https://calendly.com/bizpluscrm/freedemo";
 
 const trustPoints = [
-  { title: "20+ Years", text: "Industry Experience", icon: "icon-star" },
+  { title: "13+ Years", text: "Industry Experience", icon: "icon-star" },
   { title: "ERP & SaaS", text: "Software Company", icon: "icon-building" },
   { title: "Serving Businesses", text: "Across India", icon: "icon-users" },
   { title: "Dedicated Support &", text: "Implementation Team", icon: "icon-headset" },
@@ -29,7 +28,7 @@ const heroIndustries = [
 ];
 
 const products = [
- 
+
   {
     name: "BizPlus CRM",
     label: "CRM & Sales Automation Software",
@@ -60,10 +59,10 @@ const products = [
     action: "Start Free Trial",
     href: "#contact",
   },
-   {
+  {
     name: "BizPlus ERP",
     label: "Complete Manufacturing ERP Software",
-    image: bizplusLogo,
+    image: bizplusErpLogo,
     body:
       "Manage your entire manufacturing and business operations from one centralized ERP platform. BizPlus ERP helps businesses streamline CRM, quotation, production planning, BOM, inventory, warehouse, dispatch, accounting, and after-sales processes with improved efficiency and visibility.",
     points: ["CRM", "Production", "BOM", "Job Cards", "Inventory", "Dispatch", "AMC", "Accounting"],
@@ -77,7 +76,7 @@ const whyChooseUs = [
     title: "Industry Experience",
     icon: "icon-clock",
     text:
-      "With more than 20 years of experience in the software industry, we understand the operational challenges businesses face and deliver practical technology solutions that improve efficiency and business growth.",
+      "With more than 13 years of experience in the software industry, we understand the operational challenges businesses face and deliver practical technology solutions that improve efficiency and business growth.",
   },
   {
     title: "Complete Business Automation",
@@ -112,11 +111,12 @@ const whyChooseUs = [
 ];
 
 const strengths = [
-  "20+ Years Industry Experience",
+  "13+ Years Industry Experience",
   "ERP & CRM Specialists",
   "Manufacturing & Healthcare Solutions",
   "Reliable Technical Support",
   "Scalable SaaS Solutions",
+  "Custom App Development",
 ];
 
 const industries = [
@@ -195,7 +195,7 @@ export default function Page() {
   const shouldReduceMotion = useReducedMotion();
   return (
     <main>
-     {/*<div className="topbar">
+      {/*<div className="topbar">
         <div>
           <a href="tel:+917030323838">+91 70303 23838</a>
           <a href="tel:+919921388999">+91 99213 88999</a>
@@ -206,10 +206,7 @@ export default function Page() {
           <a href="https://x.com/LTechedge">X</a>
           <a href="https://in.linkedin.com/company/landmark-techedge-pvt-ltd">LinkedIn</a>
         </div>
-      </div>*/}
-
-      <SiteHeader />
-
+      </div>*/}
       <section id="home" className="hero hero-blue">
         <div className="hero-orbits" aria-hidden="true">
           <span />
@@ -218,7 +215,7 @@ export default function Page() {
         </div>
         <div className="hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow">Trusted Software & Technology Solutions Since 2003</span>
+            <span className="eyebrow">Trusted Software & Technology Solutions Since 2013</span>
             <h1>Empowering Businesses with Smart ERP, CRM & SaaS Solutions</h1>
             <p>
               Landmark Techedge Pvt. Ltd. helps businesses streamline operations with powerful software solutions for CRM,
@@ -258,18 +255,15 @@ export default function Page() {
               <img src={logo.src} alt="LandMark TechEdge logo" />
             </div>
             <div className="floating-stat stat-a">
-              <strong>20+</strong>
+              <strong>13+</strong>
               years experience
             </div>
-            <div className="floating-stat stat-b">
-              <strong>4</strong>
-              core product lines
-            </div>
+
           </div>
         </div>
       </section>
 
-      
+
 
 
       <section id="products" className="products">
@@ -300,7 +294,7 @@ export default function Page() {
                     <b key={point}>{point}</b>
                   ))}
                 </div>
-                <a className="text-link" href={product.name.includes("Altaro") ? "/altaro" : product.href}>
+                <a className="button button-primary" href={product.name.includes("Altaro") ? "/altaro" : product.href} style={{ marginTop: '12px' }}>
                   {product.action}
                 </a>
               </div>
@@ -312,7 +306,7 @@ export default function Page() {
       <section className="why-choose-us">
         <div className="section-heading">
           <span className="eyebrow">WHY CHOOSE US</span>
-          <h2>Delivering Reliable Software Solutions Since 2003</h2>
+          <h2>Delivering Reliable Software Solutions Since 2013</h2>
           <p>
             At Landmark Techedge Pvt. Ltd., we help businesses streamline operations with powerful ERP, CRM, healthcare,
             and business automation solutions tailored to modern industry requirements.
@@ -341,7 +335,7 @@ export default function Page() {
 
       <section className="homepage-cta">
         <div className="homepage-cta-content">
-          
+
           <h2>Ready to Transform Your Business Operations?</h2>
           <p>
             Streamline your workflow with smart ERP, CRM, and business automation solutions from Landmark Techedge Pvt. Ltd.
@@ -386,6 +380,8 @@ export default function Page() {
             <span>Distributors</span>
             <span>Service Industries</span>
             <span>IT Companies</span>
+            <span>Education</span>
+            <span>Logistics</span>
           </div>
         </div>
       </section>
@@ -416,7 +412,7 @@ export default function Page() {
           </p>
         </div>
         <div style={{ width: '100%', overflow: 'hidden', paddingBottom: '20px' }}>
-          <motion.div 
+          <motion.div
             animate={shouldReduceMotion ? undefined : { x: ["0%", "calc(-50% - 12px)"] }}
             transition={{ ease: "linear", duration: 40, repeat: Infinity }}
             style={{ display: 'inline-flex', gap: '24px', paddingLeft: '24px' }}

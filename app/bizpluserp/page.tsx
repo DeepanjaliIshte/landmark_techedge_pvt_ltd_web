@@ -2,7 +2,6 @@
 
 import logo from "../img/LTPLLogo.png";
 import bizplusLogo from "../img/bizplus_erp.png";
-import SiteHeader from "../components/SiteHeader";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -103,7 +102,6 @@ export default function BizPlusErpPage() {
 
   return (
     <main style={{ overflowX: "hidden", background: "#f8fafc" }}>
-      <SiteHeader />
 
       {/* Hero Section */}
       <section className="hero hero-blue" style={{ background: "linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,0.5) 100%)", paddingBottom: '0' }}>
