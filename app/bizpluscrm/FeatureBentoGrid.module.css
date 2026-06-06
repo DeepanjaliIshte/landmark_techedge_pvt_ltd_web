@@ -45,23 +45,26 @@
 }
 
 .heading {
-  max-width: 760px;
-  margin-bottom: 24px;
+  max-width: 100%;
+  margin: 0 auto 24px;
+  text-align: center;
 }
 
 .heading h2 {
   margin: 10px 0 12px;
-  font-size: clamp(30px, 4vw, 54px);
+  font-size: clamp(24px, 3.5vw, 42px);
   line-height: 1.05;
   letter-spacing: -0.04em;
+  white-space: nowrap;
 }
 
 .heading p {
-  margin: 0;
+  margin: 0 auto;
   color: var(--muted);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.75;
-  max-width: 640px;
+  max-width: 100%;
+  white-space: nowrap;
 }
 
 .grid {
@@ -544,6 +547,11 @@
   .spanFixed {
     grid-column: 1 / -1;
     min-height: 0;
+  }
+
+  .heading h2,
+  .heading p {
+    white-space: normal;
   }
 
   .card {

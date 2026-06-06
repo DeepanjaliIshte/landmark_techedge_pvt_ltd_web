@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -83,6 +83,10 @@ const slides: Slide[] = [
   },
 ];
 
+const PaginationContainer = memo(function PaginationContainer() {
+  return <div className="pc-pagination" />;
+});
+
 export function PerformanceCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
@@ -142,10 +146,9 @@ export function PerformanceCarousel() {
 
             return (
               <SwiperSlide key={slide.src}>
-                <motion.article
+                <article
                   className={`pc-slide ${isActive ? "is-active" : ""}`}
-                  whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  style={{ transition: "transform 0.35s ease-out, opacity 0.3s ease, box-shadow 0.3s ease" }}
                 >
                   <div className="pc-imageWrap">
                     <Image
@@ -163,7 +166,7 @@ export function PerformanceCarousel() {
                     <span>{slide.label}</span>
                     <p>{slide.description}</p>
                   </div>
-                </motion.article>
+                </article>
               </SwiperSlide>
             );
           })}
@@ -179,7 +182,7 @@ export function PerformanceCarousel() {
               transition={{ duration: 2.8, ease: "linear" }}
             />
           </div>
-          <div className="pc-pagination" />
+          <PaginationContainer />
         </div>
       </div>
     </motion.div>

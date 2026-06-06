@@ -1,27 +1,29 @@
+"use client";
+
+import React from "react";
 import altaroLogo from "../img/altaro2.png";
 import SiteHeader from "../components/SiteHeader";
+import ContactSection from "../components/ContactSection";
+import FadeInSection from "../components/FadeInSection";
+import { motion, useReducedMotion } from "framer-motion";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 const downloadHref = "/#contact";
 
 const topFeatures = [
   {
-    icon: "wsb-icon-server",
     title: "Back up and restore physical servers",
     text: "Back up your physical servers and restore them to a virtual environment (as a virtual disk or a virtual machine running on a Hyper-V hypervisor).",
   },
   {
-    icon: "wsb-icon-easy",
     title: "Easy to use",
     text: "Run the solution on the physical server you wish to back up and create your backup schedule. Manage it through a user-friendly local management console.",
   },
   {
-    icon: "wsb-icon-storage",
     title: "Outstanding storage savings",
     text: "Enjoy industry-leading reductions in backup storage size thanks to our signature inline deduplication.",
   },
   {
-    icon: "wsb-icon-free",
     title: "Unbeatable value",
     text: "Benefit from reliable, no-cost backup and recovery for the physical machines on your network.",
   },
@@ -85,15 +87,6 @@ const valuePoints = [
     title: "Community support",
     text: "Join the active user community and get answers from peers and experts through the official community forum and knowledge base.",
   },
-  {
-    title: "Single-vendor solution",
-    text: "Combine Physical Server Backup with VM Backup, Microsoft 365 backup, and MSP offerings from one trusted vendor for complete data protection.",
-    links: [
-      { label: "VM Backup", href: "/altaro/vm-backup-replication" },
-      { label: "Microsoft 365 Backup", href: "/altaro/microsoft-365-backup" },
-      { label: "Altaro overview", href: "/altaro" },
-    ],
-  },
 ];
 
 const supportedOs = [
@@ -120,266 +113,169 @@ const faqs = [
   },
 ];
 
-function ConsoleVisual({ label }: { label: string }) {
-  return (
-    <div className="wsb-console" aria-label={label}>
-      <div className="wsb-console-top">
-        <span />
-        <span />
-        <span />
-        <strong>{label}</strong>
-      </div>
-      <div className="wsb-console-body">
-        <aside className="wsb-console-nav">
-          <span className="active">Dashboard</span>
-          <span>Backups</span>
-          <span>Restore</span>
-          <span>Settings</span>
-        </aside>
-        <div className="wsb-console-main">
-          <div className="wsb-console-status">Backup successful</div>
-          <div className="wsb-console-bars">
-            <span style={{ width: "88%" }} />
-            <span style={{ width: "72%" }} />
-            <span style={{ width: "94%" }} />
-          </div>
-          <img src={altaroLogo.src} alt="Altaro Physical Server Backup" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function FeatureBlock({ title, text }: { title: string; text: string }) {
-  return (
-    <article className="wsb-feature-block">
-      <h3>{title}</h3>
-      <p>{text}</p>
-    </article>
-  );
-}
-
 export default function WindowsServerBackupPage() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <main className="wsb-page">
+    <main style={{ overflowX: "hidden", background: "#f8fafc" }}>
       <SiteHeader />
 
-      <section className="hero hero-blue wsb-hero">
-        <div className="hero-orbits" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
+      {/* Hero Section */}
+      <section className="hero hero-blue" style={{ background: "linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,0.5) 100%)" }}>
         <div className="hero-grid">
-          <div className="hero-copy">
-            <span className="eyebrow">Windows Server Backup</span>
+          <motion.div 
+            className="hero-copy"
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -30 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="eyebrow" style={{ display: 'inline-block', marginBottom: '16px' }}>Windows Server Backup</span>
             <h1>Download Your Free Windows Server Backup</h1>
             <p>
               Back up the physical servers on your network through this P2V solution and benefit from fast, easy recovery
               should they be impacted by a disaster.
             </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href={downloadHref}>
-                Download Now
-              </a>
-              <a className="button button-secondary" href={whatsappHref}>
-                Talk to Our Team
-              </a>
+            <div className="hero-actions" style={{ flexWrap: 'wrap' }}>
+              <a className="button button-primary" href={downloadHref}>Download Now</a>
+              <a className="button button-secondary" href={whatsappHref}>Talk to Our Team</a>
             </div>
-          </div>
-          <div className="hero-visual wsb-hero-visual">
-            <div className="visual-ring" aria-hidden="true" />
-            <div className="visual-card">
-              <img src={altaroLogo.src} alt="Physical Server Backup" />
-            </div>
-            <div className="floating-stat stat-b">
-              <strong>FREE</strong>
-              physical server backup
-            </div>
-          </div>
+          </motion.div>
+
+          <motion.div 
+            className="hero-visual"
+            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
+            <motion.div 
+              className="visual-card"
+              animate={shouldReduceMotion ? undefined : { y: [0, -15, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.8)', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', borderRadius: '24px', boxShadow: '0 24px 60px rgba(15,23,42,0.1)' }}
+            >
+              <img src={altaroLogo.src} alt="Physical Server Backup" style={{ maxWidth: '100%', height: 'auto' }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(139,92,246,0.1)', padding: '8px 16px', borderRadius: '99px', border: '1px solid rgba(139,92,246,0.2)' }}>
+                <span style={{ fontSize: '12px', fontWeight: 800, color: '#8b5cf6', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Free</span>
+                <strong style={{ fontSize: '14px', color: '#0f172a' }}>Physical Server Backup</strong>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      <section className="wsb-intro">
-        <p>
-          Companies and organizations with virtualized server environments sometimes also have physical machines — and
-          these too require data protection. <strong>Physical Server Backup</strong> is server backup software created to
-          satisfy this need, with the added bonus that it&apos;s <strong>free</strong>.
-        </p>
-      </section>
-
-      <section className="wsb-section">
-        <div className="wsb-feature-grid-4">
-          {topFeatures.map((item) => (
-            <article className="wsb-top-card" key={item.title}>
-              <span className={`wsb-icon ${item.icon}`} aria-hidden="true" />
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="wsb-section wsb-p2v">
-        <div className="section-heading wsb-heading-center">
-          <h2>P2V Solution for Microsoft Hyper-V</h2>
-        </div>
-        <div className="wsb-split">
-          <ConsoleVisual label="Physical Server Backup dashboard" />
-          <div className="wsb-split-copy">
-            <p>
-              Physical Server Backup lets you back up physical Windows servers and restore them to{" "}
-              <a href="/altaro/vm-backup-replication">Hyper-V</a> virtual machines — a powerful physical-to-virtual (P2V)
-              path for disaster recovery.
-            </p>
-            <p>
-              Pair it with <a href="/altaro/vm-backup-replication">VM Backup</a>,{" "}
-              <a href="/altaro/microsoft-365-backup">Microsoft 365 backup</a>, and other Altaro solutions from Landmark
-              Techedge for complete protection across servers, VMs, cloud workloads, and endpoints.
+      {/* Intro */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: '#fff' }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '28px', color: '#0f172a', marginBottom: '24px', lineHeight: 1.4 }}>
+              Protect the physical machines on your network.
+            </h2>
+            <p style={{ fontSize: '18px', color: '#64748b', lineHeight: 1.7 }}>
+              Companies and organizations with virtualized server environments sometimes also have physical machines — and
+              these too require data protection. <strong>Physical Server Backup</strong> is server backup software created to
+              satisfy this need, with the added bonus that it's <strong>completely free</strong>.
             </p>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeInSection>
 
-      <section className="wsb-section">
-        <div className="section-heading wsb-heading-center">
-          <span className="eyebrow">Features</span>
-          <h2>Physical Server Backup: Features</h2>
-          <p>
-            Protect your business with reliable backup solutions for physical machines and legacy servers that have not
-            yet been virtualized.
-          </p>
-        </div>
-        <div className="wsb-split wsb-split-reverse">
-          <div className="wsb-split-copy wsb-feature-list">
-            {mainFeatures.map((item) => (
-              <FeatureBlock key={item.title} title={item.title} text={item.text} />
-            ))}
-          </div>
-          <ConsoleVisual label="Backup and restore wizard" />
-        </div>
-      </section>
-
-      <section className="wsb-section wsb-alt-row">
-        <div className="wsb-split">
-          <ConsoleVisual label="Success dashboard" />
-          <div className="wsb-split-copy wsb-feature-list">
-            {disasterFeatures.map((item) => (
-              <FeatureBlock key={item.title} title={item.title} text={item.text} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="wsb-section wsb-alt-row">
-        <div className="wsb-split wsb-split-reverse">
-          <div className="wsb-split-copy wsb-feature-list">
-            {performanceFeatures.map((item) => (
-              <FeatureBlock key={item.title} title={item.title} text={item.text} />
-            ))}
-          </div>
-          <ConsoleVisual label="Configuration console" />
-        </div>
-      </section>
-
-      <section className="wsb-section">
-        <div className="wsb-split">
-          <div className="wsb-split-copy wsb-feature-list">
-            {valuePoints.map((item) => (
-              <article className="wsb-feature-block" key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-                {item.links ? (
-                  <p className="wsb-inline-links">
-                    {item.links.map((link, i) => (
-                      <span key={link.href}>
-                        {i > 0 ? " · " : null}
-                        <a href={link.href}>{link.label}</a>
-                      </span>
-                    ))}
-                  </p>
-                ) : null}
-              </article>
-            ))}
-          </div>
-          <ConsoleVisual label="License and status" />
-        </div>
-      </section>
-
-      <section className="wsb-section wsb-os">
-        <div className="section-heading wsb-heading-center">
-          <h2>What operating systems does this freeware Physical Server Backup back up?</h2>
-          <p className="wsb-os-kicker">Windows Server backup — Supported OSs</p>
-        </div>
-        <div className="wsb-os-panel">
-          <ul>
-            {supportedOs.map((os) => (
-              <li key={os}>{os}</li>
-            ))}
-          </ul>
-          <p className="wsb-os-note">
-            Free VMware ESXi hosts are not supported. For virtual environments, use{" "}
-            <a href="/altaro/vm-backup-replication">VM Backup & Replication</a>.
-          </p>
-        </div>
-      </section>
-
-      <section className="wsb-section wsb-faq-section">
-        <details className="wsb-faq-banner">
-          <summary>FAQs: Free Windows Server Backup</summary>
-          <div className="wsb-faq-list">
-            {faqs.map((item) => (
-              <details className="wsb-faq-item" key={item.q}>
-                <summary>{item.q}</summary>
-                <p>{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </details>
-      </section>
-
-      <section className="contact wsb-contact">
-        <div className="section-heading">
-          <span className="eyebrow">Contact</span>
-          <h2>Get help with Windows Server Backup</h2>
-          <p>Landmark Techedge can guide you through download, setup, and pairing Physical Server Backup with your Altaro stack.</p>
-        </div>
-        <div className="contact-grid">
-          <div className="contact-panel">
-            <h3>Windows Server Backup</h3>
-            <p>
-              <a href="tel:+917030323838">+91 70303 23838</a>
-              <br />
-              <a href="mailto:info@bizpluserp.com">info@bizpluserp.com</a>
-            </p>
-            <div className="contact-actions">
-              <a className="button button-primary" href={downloadHref}>
-                Download Now
-              </a>
-              <a className="button button-secondary" href={whatsappHref}>
-                Chat on WhatsApp
-              </a>
+      {/* Top Features */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: 'linear-gradient(135deg, rgba(207,232,255,0.15), rgba(255,179,184,0.15))' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
+              {topFeatures.map((item, i) => (
+                <div key={i} className="impact-card" style={{ borderRadius: '20px', padding: '32px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(59,130,246,0.1)', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                  </div>
+                  <h3 style={{ fontSize: '20px', color: '#0f172a', marginBottom: '12px', lineHeight: 1.3 }}>{item.title}</h3>
+                  <p style={{ fontSize: '15px', color: '#64748b', lineHeight: 1.6, margin: 0 }}>{item.text}</p>
+                </div>
+              ))}
             </div>
           </div>
-          <form className="contact-form">
-            <label>
-              Your Name
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              Your Email
-              <input type="email" name="email" required />
-            </label>
-            <label>
-              Server Backup Requirement
-              <textarea name="message" rows={6} required />
-            </label>
-            <button className="button button-primary" type="submit">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
+        </section>
+      </FadeInSection>
+
+      {/* Main Features Split Grid */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: '#fff' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+            <div className="section-heading" style={{ textAlign: 'center', margin: '0 auto 48px' }}>
+              <span className="eyebrow" style={{ justifyContent: 'center' }}>Features</span>
+              <h2>Physical Server Backup: Features</h2>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '32px' }}>
+              <div className="impact-card" style={{ borderRadius: '24px', padding: '40px' }}>
+                <h3 style={{ fontSize: '24px', color: '#0f172a', marginBottom: '24px', borderBottom: '2px solid rgba(59,130,246,0.1)', paddingBottom: '16px' }}>Backup & Recovery</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  {mainFeatures.map((item, i) => (
+                    <div key={i}>
+                      <h4 style={{ fontSize: '18px', color: '#1e293b', margin: '0 0 8px' }}>{item.title}</h4>
+                      <p style={{ fontSize: '15px', color: '#64748b', margin: 0, lineHeight: 1.6 }}>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="impact-card" style={{ borderRadius: '24px', padding: '40px' }}>
+                <h3 style={{ fontSize: '24px', color: '#0f172a', marginBottom: '24px', borderBottom: '2px solid rgba(16,185,129,0.1)', paddingBottom: '16px' }}>Performance & Setup</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  {performanceFeatures.map((item, i) => (
+                    <div key={i}>
+                      <h4 style={{ fontSize: '18px', color: '#1e293b', margin: '0 0 8px' }}>{item.title}</h4>
+                      <p style={{ fontSize: '15px', color: '#64748b', margin: 0, lineHeight: 1.6 }}>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="impact-card" style={{ borderRadius: '24px', padding: '40px', gridColumn: '1 / -1' }}>
+                <h3 style={{ fontSize: '24px', color: '#0f172a', marginBottom: '24px', borderBottom: '2px solid rgba(245,158,11,0.1)', paddingBottom: '16px' }}>Disaster Recovery & Value</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+                  {disasterFeatures.concat(valuePoints).map((item, i) => (
+                    <div key={i}>
+                      <h4 style={{ fontSize: '18px', color: '#1e293b', margin: '0 0 8px' }}>{item.title}</h4>
+                      <p style={{ fontSize: '15px', color: '#64748b', margin: 0, lineHeight: 1.6 }}>{item.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* OS Support */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: 'linear-gradient(135deg, rgba(15,23,42,0.02), rgba(15,23,42,0.05))' }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '32px', color: '#0f172a', marginBottom: '16px' }}>What operating systems does this freeware back up?</h2>
+            <p style={{ fontSize: '18px', color: '#64748b', marginBottom: '32px' }}>Supported Windows Server OS Versions:</p>
+            
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginBottom: '32px' }}>
+              {supportedOs.map((os) => (
+                <span key={os} style={{ padding: '12px 24px', background: '#fff', borderRadius: '99px', fontSize: '15px', fontWeight: 600, color: '#334155', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                  {os}
+                </span>
+              ))}
+            </div>
+            
+            <p style={{ fontSize: '14px', color: '#64748b', fontStyle: 'italic' }}>
+              Free VMware ESXi hosts are not supported. For virtual environments, use{" "}
+              <a href="/altaro/vm-backup" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 600 }}>VM Backup & Replication</a>.
+            </p>
+          </div>
+        </section>
+      </FadeInSection>
+
+      <FadeInSection>
+        <section id="contact">
+          <ContactSection />
+        </section>
+      </FadeInSection>
 
       <footer className="footer">
         <h2>LandMark TechEdge</h2>
@@ -392,8 +288,7 @@ export default function WindowsServerBackupPage() {
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );

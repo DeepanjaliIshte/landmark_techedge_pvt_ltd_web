@@ -289,8 +289,7 @@ export default function IvrPage() {
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );

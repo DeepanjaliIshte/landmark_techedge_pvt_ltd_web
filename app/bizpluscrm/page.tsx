@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import bizplusLogo from "../img/Logo-bizpluscrm1.png";
 import logo from "../img/LTPLLogo.png";
+import SiteHeader from "../components/SiteHeader";
 import { useState, useEffect, useRef } from "react";
 import { FeatureBentoGrid } from "./FeatureBentoGrid";
 import { PerformanceCarousel } from "./PerformanceCarousel";
@@ -54,93 +54,20 @@ function FadeInSection(props: { children: React.ReactNode }) {
 
 export default function BizplusPage() {
   const [videoError, setVideoError] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
-
-  useEffect(() => {
-    function handleResize() {
-      if (window.innerWidth > 900 && navOpen) setNavOpen(false);
-    }
-    function handleEscape(e: KeyboardEvent) {
-      if (e.key === "Escape") setNavOpen(false);
-    }
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("keydown", handleEscape);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, [navOpen]);
-
   return (
     <main style={{ overflowX: "hidden" }}>
-      <header className="site-header">
-        <Link className="brand" href="/" aria-label="LandMark TechEdge home" onClick={() => setNavOpen(false)}>
-          <img src={logo.src} alt="LandMark TechEdge" />
-        </Link>
+      
 
-        <button
-          className="nav-toggle"
-          aria-controls="bizpluscrm-navigation"
-          aria-expanded={navOpen}
-          onClick={() => setNavOpen((open) => !open)}
-          aria-label={navOpen ? "Close menu" : "Open menu"}
-        >
-          <span className="bar" aria-hidden="true" />
-        </button>
-
-        <nav
-          id="bizpluscrm-navigation"
-          className={`site-nav ${navOpen ? "open" : ""}`}
-          aria-label="Primary navigation"
-        >
-          <Link href="/" onClick={() => setNavOpen(false)}>Home</Link>
-
-          <Link href="/#about" onClick={() => setNavOpen(false)}>
-            About Us
-          </Link>
-
-          <Link href="/#services" onClick={() => setNavOpen(false)}>
-            Services
-          </Link>
-
-          <Link href="/ai-ml" onClick={() => setNavOpen(false)}>
-            AI &amp; ML
-          </Link>
-
-          <Link href="/bizpluscrm" onClick={() => setNavOpen(false)}>
-            BizPlusCRM
-          </Link>
-
-          <Link href="/bizpluserp" onClick={() => setNavOpen(false)}>
-            BizPlusERP
-          </Link>
-
-          <Link href="/ivr" onClick={() => setNavOpen(false)}>
-            IVR
-          </Link>
-
-          <Link href="/altaro" onClick={() => setNavOpen(false)}>
-            Altaro
-          </Link>
-
-          <Link href="/#contact" onClick={() => setNavOpen(false)}>
-            Contact
-          </Link>
-
-          <a className="nav-cta" href={whatsappHref} onClick={() => setNavOpen(false)}>
-            WhatsApp
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <FadeInSection>
         <section className="hero hero-blue">
           <div className="hero-grid">
             <div className="hero-copy">
               <span className="eyebrow">Presenting BizPlusCRM Software with Easy &amp; Affordable Solution</span>
-              <h1>Are you Frustrated &amp; Worry about lead and follow-up management Everyday?</h1>
+              <h1>Are you Frustrated &amp; Worried about lead and follow-up management Everyday?</h1>
               <p>BizPlusCRM is an all-in-one platform designed to streamline your lead tracking, automate follow-ups, and boost your sales team&apos;s productivity. Experience a premium, hassle-free CRM solution tailored for your business growth.</p>
-              <div className="hero-actions">
+              <div className="hero-actions" style={{ flexWrap: 'wrap' }}>
                 <a className="button button-primary" href="https://calendly.com/bizpluscrm/freedemo">BOOK AN APPOINTMENT</a>
                 <a className="button button-secondary" href="https://calendly.com/bizpluscrm/freedemo">FREE TRIAL</a>
               </div>
@@ -340,8 +267,7 @@ export default function BizplusPage() {
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );

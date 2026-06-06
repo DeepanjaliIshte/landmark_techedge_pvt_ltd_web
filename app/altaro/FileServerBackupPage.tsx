@@ -1,22 +1,14 @@
+"use client";
+
+import React from "react";
 import altaroLogo from "../img/altaro2.png";
 import SiteHeader from "../components/SiteHeader";
+import ContactSection from "../components/ContactSection";
+import FadeInSection from "../components/FadeInSection";
+import { motion, useReducedMotion } from "framer-motion";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 const contactHref = "/#contact";
-
-const staggeredFeatures = [
-  {
-    title: "Continuous Data Protection",
-    text: "Highly tuned file change detection technology makes sure that you are protected at all times.",
-    visual: "dashboard",
-  },
-  {
-    title: "Backs Up Open Files",
-    text: "Integrates with MS Volume Shadow (VSS) to back up files that are in use such as PST files, and more.",
-    visual: "config",
-    reverse: true,
-  },
-];
 
 const productFeatures = [
   {
@@ -65,233 +57,159 @@ const productFeatures = [
   },
 ];
 
-function BackupFsVisual({ variant, label }: { variant: string; label: string }) {
-  return (
-    <div className="wsb-console fsb-console" aria-label={label}>
-      <div className="wsb-console-top">
-        <span />
-        <span />
-        <span />
-        <strong>Altaro Backup FS — {variant}</strong>
-      </div>
-      <div className="wsb-console-body fsb-console-body-wide">
-        <aside className="wsb-console-nav">
-          <span className="active">Dashboard</span>
-          <span>Backups</span>
-          <span>Restore</span>
-          <span>Settings</span>
-        </aside>
-        <div className="wsb-console-main">
-          {variant === "dashboard" ? (
-            <>
-              <div className="fsb-chart" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="wsb-console-status">CDP active — all drives protected</div>
-            </>
-          ) : (
-            <>
-              <div className="wsb-console-bars">
-                <span style={{ width: "92%" }} />
-                <span style={{ width: "68%" }} />
-              </div>
-              <div className="wsb-console-status">VSS — open files included</div>
-            </>
-          )}
-          <img src={altaroLogo.src} alt="Altaro Backup FS" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function BackInTimeVisual() {
-  return (
-    <div className="fsb-backintime-visual" aria-label="BackIn Time browser">
-      <div className="fsb-backintime-bar">
-        <span />
-        <span />
-        <span />
-        <strong>BackIn Time</strong>
-      </div>
-      <div className="fsb-folders">
-        <div className="fsb-folder">
-          <span aria-hidden="true" />
-          Photos
-        </div>
-        <div className="fsb-folder">
-          <span aria-hidden="true" />
-          Documents
-        </div>
-        <div className="fsb-folder">
-          <span aria-hidden="true" />
-          Work Projects
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function FileServerBackupPage() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <main className="fsb-page">
+    <main style={{ overflowX: "hidden", background: "#f8fafc" }}>
       <SiteHeader />
 
-      <section className="hero hero-blue fsb-hero">
-        <div className="hero-orbits" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
+      {/* Hero Section */}
+      <section className="hero hero-blue" style={{ background: "linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,0.5) 100%)" }}>
         <div className="hero-grid">
-          <div className="hero-copy">
-            <span className="eyebrow">File Server Backup</span>
+          <motion.div 
+            className="hero-copy"
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -30 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <span className="eyebrow" style={{ display: 'inline-block', marginBottom: '16px' }}>File Server Backup</span>
             <h1>File Server BackUp</h1>
-            <p className="fsb-hero-sub">
-              Backup for Windows 2012, 2008, 2003, MS SBS, 8, 7, Vista &amp; XP
-            </p>
             <p>
-              <strong>Altaro Backup FS</strong> is the perfect, affordable premium backup solution for professionals and
-              small &amp; mid-sized businesses looking to protect their Windows servers and PCs from data loss.
+              <strong>Altaro Backup FS</strong> is the perfect & affordable premium backup solution for professionals and small & mid- sized businesses looking to protect their Windows Servers and PCs from data loss.
             </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href={contactHref}>
-                Request a Quote
-              </a>
-              <a className="button button-secondary" href={whatsappHref}>
-                Talk to Our Team
-              </a>
+            <div className="hero-actions" style={{ flexWrap: 'wrap' }}>
+              <a className="button button-primary" href={contactHref}>Request a Quote</a>
+              <a className="button button-secondary" href={whatsappHref}>Talk to Our Team</a>
             </div>
-          </div>
-          <div className="hero-visual fsb-hero-visual">
-            <div className="visual-ring" aria-hidden="true" />
-            <div className="visual-card">
-              <img src={altaroLogo.src} alt="Altaro Backup FS" />
-            </div>
-          </div>
+            <small style={{ display: 'block', marginTop: '16px', color: '#64748b', fontWeight: 600 }}>
+              Backup for Windows 2012, 2008, 2003, MS SBS, 8, 7, Vista & XP
+            </small>
+          </motion.div>
+
+          <motion.div 
+            className="hero-visual"
+            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
+            <img src="/assets/img/Altaro/fs-1.png" alt="Altaro Backup FS Dashboard" style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 24px 60px rgba(15,23,42,0.1)' }} />
+          </motion.div>
         </div>
       </section>
 
-      {staggeredFeatures.map((item) => (
-        <section
-          className={`fsb-section fsb-split-row ${item.reverse ? "fsb-split-reverse" : ""}`}
-          key={item.title}
-        >
-          <div className={`wsb-split ${item.reverse ? "wsb-split-reverse" : ""}`}>
-            {item.reverse ? (
-              <>
-                <div className="wsb-split-copy">
-                  <h2>{item.title}</h2>
-                  <p>{item.text}</p>
-                </div>
-                <BackupFsVisual variant={item.visual} label={item.title} />
-              </>
-            ) : (
-              <>
-                <BackupFsVisual variant={item.visual} label={item.title} />
-                <div className="wsb-split-copy">
-                  <h2>{item.title}</h2>
-                  <p>{item.text}</p>
-                </div>
-              </>
-            )}
+      {/* Feature Split 1 */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: '#fff' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center' }}>
+            <div className="impact-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 12px 40px rgba(0,0,0,0.08)' }}>
+              <img src="/assets/img/Altaro/fs-2.png" alt="Continuous Data Protection" style={{ width: '100%', height: 'auto' }} />
+            </div>
+            <div>
+              <h2 style={{ fontSize: '36px', color: '#0f172a', margin: '16px 0 24px', lineHeight: 1.2 }}>Continuous Data Protection</h2>
+              <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7 }}>
+                Highly tuned file-change-detection technology makes sure that you are protected at all times.
+              </p>
+            </div>
           </div>
         </section>
-      ))}
+      </FadeInSection>
 
-      <section className="fsb-section fsb-backintime">
-        <div className="wsb-split">
-          <BackInTimeVisual />
-          <div className="wsb-split-copy">
-            <span className="eyebrow">Restore in seconds</span>
-            <h2>BackIn Time</h2>
-            <p>
-              Using the BackIn Time browser it takes seconds to find and restore a file from any point in time — giving
-              your team fast recovery without complex restore workflows.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="fsb-section">
-        <div className="section-heading fsb-heading-center">
-          <span className="eyebrow">Product features</span>
-          <h2>Everything you need to protect file servers &amp; PCs</h2>
-        </div>
-        <div className="fsb-feature-list">
-          {productFeatures.map((item) => (
-            <article className="fsb-feature-row" key={item.title}>
-              <p>
-                <strong>{item.title}</strong> — {item.text}
+      {/* Feature Split 2 */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: 'linear-gradient(135deg, rgba(207,232,255,0.15), rgba(255,179,184,0.15))' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center' }}>
+            <div>
+              <h2 style={{ fontSize: '36px', color: '#0f172a', margin: '16px 0 24px', lineHeight: 1.2 }}>Backs Up Open Files</h2>
+              <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7 }}>
+                Integrates with MS Volume Shadow (VSS) to back up files that are in use such as PST files, etc.
               </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="contact fsb-contact">
-        <div className="section-heading fsb-contact-heading">
-          <span className="fsb-contact-line" aria-hidden="true" />
-          <h2>Contact</h2>
-        </div>
-        <div className="contact-grid fsb-contact-grid">
-          <div className="contact-panel fsb-contact-panel">
-            <div className="fsb-contact-block">
-              <h3>Location</h3>
-              <p>
-                Dhruta Complex, 104 &amp; 105, NC Kelkar Road,
-                <br />
-                Narayan Peth, Pune, Maharashtra 411030
+              
+              <h2 style={{ fontSize: '36px', color: '#0f172a', margin: '48px 0 24px', lineHeight: 1.2 }}>BackIn Time</h2>
+              <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7 }}>
+                Using the BackInTime browser it takes seconds to find and restore a file from any point in time.
               </p>
             </div>
-            <div className="fsb-contact-block">
-              <h3>Contact Us</h3>
-              <p>
-                <a href="tel:+917030323838">+91 70303 23838</a>
-                <br />
-                <a href="tel:+919921388999">+91 99213 88999</a>
-                <br />
-                <a href="mailto:info@bizpluserp.com">info@bizpluserp.com</a>
-              </p>
-            </div>
-            <iframe
-              title="Landmark Techedge office location"
-              src="https://maps.google.com/maps?q=Dhruta+Complex,+NC+Kelkar+Road,+Narayan+Peth,+Pune,+411030&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            <div className="contact-actions">
-              <a className="button button-primary" href={whatsappHref}>
-                Chat on WhatsApp
-              </a>
+            <div className="impact-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 12px 40px rgba(0,0,0,0.08)' }}>
+              <img src="/assets/img/Altaro/fs-3.png" alt="BackIn Time" style={{ width: '100%', height: 'auto' }} />
             </div>
           </div>
+        </section>
+      </FadeInSection>
 
-          <form className="contact-form">
-            <label>
-              Your Name
-              <input type="text" name="name" required />
-            </label>
-            <label>
-              Your Email
-              <input type="email" name="email" required />
-            </label>
-            <label>
-              Subject
-              <input type="text" name="subject" required />
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows={7} required />
-            </label>
-            <button className="button button-primary" type="submit">
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
+      {/* Feature List */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: '#fff' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+            <div className="section-heading" style={{ textAlign: 'center', margin: '0 auto 48px' }}>
+              <h2>More Features</h2>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+              {[
+                {
+                  title: "Save Space",
+                  text: "Only back up sections of files that changed using ReverseDelta™ Technology - Using ReverseDelta™ incremental technology, Backup FS only backs up the actual changes you make to a file – without needing to back up the whole file again every time you make a change.",
+                },
+                {
+                  title: "Continuous Data Protection (CDP) for Best Protection",
+                  text: "Highly tuned file-change-detection technology makes sure that you are protected at all time.",
+                },
+                {
+                  title: "Double-Protection with Backup Drive Redundancy",
+                  text: "Automatically keep a double-backup to protect against theft, fire or loss of your backup drive.",
+                },
+                {
+                  title: "Back up to NAS, Network Drive & USB",
+                  text: "Choose the locations where you want to back up to; offices can choose to backup to their server or NAS drive.",
+                },
+                {
+                  title: "Automatic Backup on Connect with Plug & Protect™",
+                  text: "for Laptop Users - Automatically initiates a backup once the backup drive is connected to the computer.",
+                },
+                {
+                  title: "Restore different versions of your files with inbuilt BackInTime Technology",
+                  text: "Restore from multiple points in time rather than 'the most recent backup'",
+                },
+                {
+                  title: "Email Notifications on Backup Success or Failure",
+                  text: "Receive email reports when a backup takes place. Providing peace of mind knowing that all your data is backed up.",
+                },
+                {
+                  title: "Flexible Scheduling fits your needs",
+                  text: "With Backup Scheduling you can choose to backup multiple times a day or to back up automatically as soon as a file changes. You can also choose to back up multiple times a day at a pre-set time, say for example at lunch break and during the night.",
+                },
+                {
+                  title: "Restore Files through Email",
+                  text: "With Altaro Backup FS you have the option to send a copy of the restored files to employees via email automatically - wherever they are in the world.",
+                },
+                {
+                  title: "Unattended Backups",
+                  text: "Runs as a Windows service -ideal for unattended servers. Backs up even when users are not logged in.",
+                },
+                {
+                  title: "Supports Windows 2012, 2008 (incl. R2), 2003 & Microsoft Small Business Server",
+                  text: "Fully supports Windows server operating systems including Microsoft SBS. Ideal for Small & Mid-Sized Businesses.",
+                },
+              ].map((item, i) => (
+                <div key={i} className="impact-card" style={{ borderRadius: '20px', padding: '32px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                  <h3 style={{ fontSize: '18px', color: '#0f172a', marginBottom: '12px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3b82f6', marginTop: '6px', flexShrink: 0 }}></div>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '15px', color: '#64748b', lineHeight: 1.6, margin: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </FadeInSection>
+
+      <FadeInSection>
+        <section id="contact">
+          <ContactSection />
+        </section>
+      </FadeInSection>
 
       <footer className="footer">
         <h2>LandMark TechEdge</h2>
@@ -304,8 +222,7 @@ export default function FileServerBackupPage() {
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );

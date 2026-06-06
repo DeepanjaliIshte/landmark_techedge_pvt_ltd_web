@@ -1,5 +1,8 @@
+"use client";
+import { motion, useReducedMotion } from "framer-motion";
 import altaroImage from "./img/altaro2.png";
 import bizplusLogo from "./img/Logo-bizpluscrm1.png";
+import bizplusErpLogo from "./img/bizplus_erp.png";
 import trioImage from "./img/Trio-corporation.jpg";
 import logo from "./img/LTPLLogo.png";
 import SiteHeader from "./components/SiteHeader";
@@ -189,6 +192,7 @@ const testimonials = [
 ];
 
 export default function Page() {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <main>
      {/*<div className="topbar">
@@ -411,14 +415,26 @@ export default function Page() {
             See what our clients say about the software solutions and support provided by Landmark Techedge Pvt. Ltd.
           </p>
         </div>
-        <div className="testimonial-slider">
-          {testimonials.map((item) => (
-            <article className="testimonial-card" key={item.name}>
-              <p>“{item.quote}”</p>
-              <h3>{item.name}</h3>
-              <small>{item.role}</small>
-            </article>
-          ))}
+        <div style={{ width: '100%', overflow: 'hidden', paddingBottom: '20px' }}>
+          <motion.div 
+            animate={shouldReduceMotion ? undefined : { x: ["0%", "calc(-50% - 12px)"] }}
+            transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+            style={{ display: 'inline-flex', gap: '24px', paddingLeft: '24px' }}
+            className="auto-scroll-track"
+          >
+            {[...testimonials, ...testimonials].map((item, i) => (
+              <article className="testimonial-card" key={`${item.name}-${i}`} style={{ width: '85vw', maxWidth: '380px', flexShrink: 0, whiteSpace: 'normal', display: 'flex', flexDirection: 'column' }}>
+                <p style={{ flexGrow: 1 }}>“{item.quote}”</p>
+                <h3>{item.name}</h3>
+                <small>{item.role}</small>
+              </article>
+            ))}
+          </motion.div>
+          <style>{`
+            .auto-scroll-track:hover {
+              animation-play-state: paused !important;
+            }
+          `}</style>
         </div>
       </section>
 
@@ -434,8 +450,7 @@ export default function Page() {
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );

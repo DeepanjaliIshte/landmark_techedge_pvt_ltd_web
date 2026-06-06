@@ -104,16 +104,16 @@ export default function ServicesPage() {
       </section>
 
       <section id="services-list" className="services-grid-section">
-        <div className="services-container">
-          <div className="section-heading">
-            <span className="eyebrow">Technology Excellence</span>
-            <h2>Services tailored around your workflows</h2>
-            <p>
-              We combine product thinking, practical engineering, and implementation support so your software solves the
-              real operational problem, not only the screen in front of it.
-            </p>
-          </div>
 
+        <div className="section-heading" style={{ textAlign: "center", margin: "0 auto 40px" }}>
+          <span className="eyebrow">Technology Excellence</span>
+          <h2>Services tailored around your workflows</h2>
+          <p>
+            We combine product thinking, practical engineering, and implementation support so your software solves the
+            real operational problem, not only the screen in front of it.
+          </p>
+        </div>
+        <div className="services-container">
           <div className="services-extended-grid">
             {services.map((service) => (
               <article className="service-extended-card" key={service.name}>
@@ -189,8 +189,7 @@ export default function ServicesPage() {
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );

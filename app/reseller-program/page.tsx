@@ -1,141 +1,161 @@
 "use client";
 
+import React from "react";
 import SiteHeader from "../components/SiteHeader";
 import ContactSection from "../components/ContactSection";
-import teamImg from "../img/team.jpg";
+import FadeInSection from "../components/FadeInSection";
+import { motion, useReducedMotion } from "framer-motion";
 
-const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
-
-const programCards = [
-  {
-    title: "Reseller Program",
-    text: "Offer Landmark solutions to your existing customers with sales enablement, product guidance, and support from our team.",
-  },
-  {
-    title: "Distributor Program",
-    text: "Expand regional reach with a channel model built for partners who manage networks of resellers and business customers.",
-  },
-  {
-    title: "Affiliate Program",
-    text: "Introduce qualified opportunities and earn through a simple referral-led model backed by Landmark's delivery team.",
-  },
-];
+const applyHref = "/#contact";
+const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi%20I'm%20interested%20in%20the%20Reseller%20Program";
 
 const benefits = [
-  "New revenue opportunities through backup, disaster recovery, and productivity solutions",
-  "Flexible packaging for customer segments, industries, and local sales channels",
-  "Pre-sales guidance, product positioning, and technical support",
-  "Solutions for PC backup, server backup, disaster recovery, and Virtual CD/DVD emulation",
-  "Partner-friendly collaboration for campaigns, demonstrations, and customer onboarding",
-  "Long-term relationship model focused on service quality and repeat business",
+  {
+    title: "High Margins & Recurring Revenue",
+    text: "Enjoy highly competitive reseller discounts that grow as you sell. Build predictable, recurring revenue streams with our subscription-based products.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    )
+  },
+  {
+    title: "Comprehensive Product Suite",
+    text: "Sell our industry-leading Altaro Backup solutions, advanced BizPlus CRM/ERP, Trio HIMS, and robust IVR systems all from one vendor.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+    )
+  },
+  {
+    title: "Dedicated Partner Support",
+    text: "Skip the generic queue. As a verified reseller, you get priority access to our top-tier technical engineers and account managers.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    )
+  },
+  {
+    title: "Not-For-Resale (NFR) Keys",
+    text: "Get free NFR licenses for your internal use and testing, allowing your team to confidently demo and sell the solutions you rely on.",
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+    )
+  }
 ];
 
 export default function ResellerProgramPage() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <main>
+    <main style={{ overflowX: "hidden", background: "#f8fafc" }}>
       <SiteHeader />
 
-      <section className="hero hero-blue">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <span className="eyebrow">Distributor / Reseller</span>
-            <h1>Landmark Techedge Reseller, Distributor and Affiliate Programs</h1>
-            <p>
-              Partner with Landmark Techedge to bring flexible, custom technology solutions to your customers while
-              creating new revenue opportunities through your established sales channels.
+      {/* Hero Section */}
+      <section className="hero hero-blue" style={{ background: "linear-gradient(135deg, rgba(239,246,255,1) 0%, rgba(219,234,254,0.5) 100%)" }}>
+        <div className="hero-grid" style={{ minHeight: '60vh', alignItems: 'center', gridTemplateColumns: '1fr' }}>
+          <motion.div 
+            className="hero-copy"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}
+          >
+            <span className="eyebrow" style={{ display: 'inline-block', marginBottom: '16px', justifyContent: 'center' }}>Partner With Us</span>
+            <h1 style={{ fontSize: '52px', lineHeight: 1.1 }}>LandMark TechEdge Reseller & Distributor Program</h1>
+            <p style={{ fontSize: '20px', margin: '24px auto 32px' }}>
+              We deliver flexible, custom solutions to IT professionals, MSPs, and top companies. Add massive value to your portfolio and generate new revenue opportunities by selling our premium enterprise software.
             </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#partner-form">
-                Become a Partner
-              </a>
-              <a className="button button-secondary" href={whatsappHref}>
-                Talk on WhatsApp
-              </a>
+            <div className="hero-actions" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a className="button button-primary" href={applyHref} style={{ padding: '16px 32px', fontSize: '18px' }}>Apply to Become a Partner</a>
+              <a className="button button-secondary" href={whatsappHref} style={{ padding: '16px 32px', fontSize: '18px' }}>Chat with our Channel Team</a>
             </div>
-          </div>
-
-          <div className="hero-visual">
-            <div className="visual-ring" aria-hidden="true" />
-            <div className="visual-card">
-              <img src={teamImg.src} alt="Landmark Techedge partner team" />
-            </div>
-            <div className="floating-stat stat-a">
-              <strong>Channel</strong>
-              Growth
-            </div>
-            <div className="floating-stat stat-b">
-              <strong>Partner</strong>
-              Support
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section style={{ padding: "76px 24px", background: "#ffffff" }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-          <div className="section-heading" style={{ marginBottom: 28 }}>
-            <span className="eyebrow">Overview</span>
-            <h2>Flexible solutions. Strong channels. Shared growth.</h2>
-            <p>
-              Landmark Technology delivers flexible, custom solutions to top companies, adding value to their products
-              and services while helping partners unlock new revenue streams. Through reseller, distributor, and
-              affiliate relationships, we broaden market reach and help customers adopt practical solutions for backup,
-              disaster recovery, and Virtual CD/DVD emulation.
+      {/* The Opportunity */}
+      <FadeInSection>
+        <section style={{ padding: '100px 24px', background: '#fff' }}>
+          <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '36px', color: '#0f172a', marginBottom: '24px', lineHeight: 1.2 }}>Expand Your Market Reach</h2>
+            <p style={{ fontSize: '18px', color: '#475569', lineHeight: 1.7, margin: '0' }}>
+              We are constantly looking for new and imaginative ways to package and market our advanced solutions—from PC & server backup to BizPlus ERP and Trio HIMS. By utilizing your established sales channels, we grow together. When you win, we win.
             </p>
           </div>
+        </section>
+      </FadeInSection>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 18 }}>
-            {programCards.map((program) => (
-              <article className="impact-card" style={{ padding: 24 }} key={program.title}>
-                <h3 style={{ marginTop: 0 }}>{program.title}</h3>
-                <p style={{ color: "var(--muted)", marginBottom: 0 }}>{program.text}</p>
-              </article>
-            ))}
+      {/* Benefits Grid */}
+      <FadeInSection>
+        <section style={{ padding: '80px 24px', background: 'linear-gradient(135deg, rgba(207,232,255,0.15), rgba(255,179,184,0.15))' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+            <div className="section-heading" style={{ textAlign: 'center', margin: '0 auto 64px' }}>
+              <span className="eyebrow" style={{ justifyContent: 'center' }}>Why Partner</span>
+              <h2>Program Benefits</h2>
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '32px' }}>
+              {benefits.map((item, i) => (
+                <div key={i} className="impact-card" style={{ borderRadius: '24px', padding: '40px', background: 'rgba(255,255,255,0.8)', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid #e2e8f0' }}>
+                  <div style={{ width: '64px', height: '64px', borderRadius: '16px', background: 'linear-gradient(135deg, #3b82f6, #60a5fa)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', boxShadow: '0 10px 25px -5px rgba(59,130,246,0.5)' }}>
+                    {item.icon}
+                  </div>
+                  <h3 style={{ fontSize: '22px', color: '#0f172a', marginBottom: '16px' }}>{item.title}</h3>
+                  <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.6, margin: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeInSection>
 
-      <section style={{ padding: "76px 24px", background: "#f8fafc" }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 36, alignItems: "start" }}>
-          <div>
-            <span className="eyebrow">Why Partner With Us</span>
-            <h2 style={{ fontSize: "clamp(28px, 4vw, 42px)", lineHeight: 1.12, margin: "12px 0 14px" }}>
-              Built for partners who already know their markets.
-            </h2>
-            <p style={{ color: "var(--muted)", fontSize: 17 }}>
-              We are always looking for new and imaginative ways to present, package, and market our solutions. If you
-              serve businesses that need reliable IT continuity, data protection, and productivity tools, Landmark can
-              help you add a stronger solution portfolio to your customer conversations.
-            </p>
-          </div>
+      {/* How to Apply Workflow */}
+      <FadeInSection>
+        <section style={{ padding: '100px 24px', background: '#fff' }}>
+          <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+            <div className="section-heading" style={{ textAlign: 'center', margin: '0 auto 64px' }}>
+              <span className="eyebrow" style={{ justifyContent: 'center' }}>Simple Process</span>
+              <h2>How It Works</h2>
+            </div>
 
-          <div style={{ display: "grid", gap: 12 }}>
-            {benefits.map((benefit) => (
-              <div className="impact-card" style={{ padding: "16px 18px" }} key={benefit}>
-                <p style={{ margin: 0, color: "var(--ink)", fontWeight: 650 }}>{benefit}</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center' }}>
+              <div style={{ flex: '1 1 300px', maxWidth: '350px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '24px', padding: '40px', textAlign: 'center', position: 'relative' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#3b82f6', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: 'bold', margin: '0 auto 24px' }}>1</div>
+                <h3 style={{ fontSize: '20px', color: '#0f172a', marginBottom: '16px' }}>Submit Inquiry</h3>
+                <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>Fill out the contact form expressing your interest in becoming a distributor or reseller.</p>
               </div>
-            ))}
+
+              <div style={{ flex: '1 1 300px', maxWidth: '350px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '24px', padding: '40px', textAlign: 'center', position: 'relative' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#8b5cf6', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: 'bold', margin: '0 auto 24px' }}>2</div>
+                <h3 style={{ fontSize: '20px', color: '#0f172a', marginBottom: '16px' }}>Account Review</h3>
+                <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>Our channel team will review your business profile and assign you an initial discount tier.</p>
+              </div>
+
+              <div style={{ flex: '1 1 300px', maxWidth: '350px', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '24px', padding: '40px', textAlign: 'center', position: 'relative' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', fontWeight: 'bold', margin: '0 auto 24px' }}>3</div>
+                <h3 style={{ fontSize: '20px', color: '#0f172a', marginBottom: '16px' }}>Start Selling</h3>
+                <p style={{ fontSize: '15px', color: '#64748b', margin: 0 }}>Get access to marketing materials, NFR licenses, and start generating predictable revenue!</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FadeInSection>
 
-      
-
-      <ContactSection />
+      <FadeInSection>
+        <section id="contact">
+          <ContactSection />
+        </section>
+      </FadeInSection>
 
       <footer className="footer">
         <h2>LandMark TechEdge</h2>
         <div>
           <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms &amp; Conditions</a>
+          <a href="/Terms.html">Terms & Conditions</a>
           <a href="/Refund.html">Refund Policy</a>
         </div>
         <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
       </footer>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
-        <span>WhatsApp</span>
-        <strong>Chat Now</strong>
+        <span className="tooltip">Chat with us! 👋</span>
       </a>
     </main>
   );
