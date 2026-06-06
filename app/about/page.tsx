@@ -282,7 +282,7 @@ export default function AboutPage() {
 
       <ContactSection />
 
-      <footer className="footer" style={{ background: "transparent", borderTop: "1px solid rgba(0,0,0,0.05)", color: "#0f172a" }}>
+      <footer className="footer">
         <h2>LandMark TechEdge</h2>
         <div>
           <a href="/Privacy.html">Privacy Policy</a>
