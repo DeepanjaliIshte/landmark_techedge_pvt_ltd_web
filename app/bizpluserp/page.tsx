@@ -399,11 +399,6 @@ export default function BizPlusErpPage() {
         </section>
       </FadeInSection>
 
-      
-      <FadeInSection>
-        
-      </FadeInSection>
-
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>
       </a>
