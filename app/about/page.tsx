@@ -9,12 +9,16 @@ import logo2 from "../img/LTPLLogo.png";
 import storyImg from "../img/about-story-3d.png";
 import missionImg from "../img/about-mission-3d.png";
 import visionImg from "../img/about-vision-3d.png";
-
+import globalTechImg from "../img/global_tech.png";
+import AnimatedCounter from "../components/AnimatedCounter";
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
+
+const currentYear = new Date().getFullYear();
+const yearsOfExp = currentYear - 2013;
 
 const strengths = [
   { value: "2013", label: "Founded in Pune" },
-  { value: "13+", label: "Years of delivery" },
+  { value: yearsOfExp, label: "Years of delivery", isCounter: true },
   { value: "360", label: "Software, support, and distribution" },
 ];
 
@@ -37,57 +41,119 @@ export default function AboutPage() {
   return (
     <main className="creative-about-main">
 
-      {/* Hero Section */}
-      <section className="creative-hero">
-        <div className="creative-hero-bg">
+      {/* Modern Hero Section */}
+      <section className="modern-hero">
+        <div className="modern-hero-bg">
           <div className="blob blob-1"></div>
           <div className="blob blob-2"></div>
         </div>
-        <motion.div
-          className="hero-glass-card"
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <motion.span
-            className="hero-eyebrow"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+
+        <div className="modern-hero-container">
+          {/* Left Content Column */}
+          <motion.div 
+            className="modern-hero-content"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            Since 2013
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7 }}
-          >
-            Technology partners for businesses that want dependable growth.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.7 }}
-          >
-            Landmark Techedge brings software development, product distribution,
-            implementation, and support together from Pune for clients,
-            resellers, and distributors.
-          </motion.p>
-          <motion.div
-            className="creative-hero-actions"
-            style={{ display: "flex", gap: "1rem", justifyContent: "center" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.5 }}
-          >
-            <a href="/#contact" className="creative-btn creative-btn-primary">
-              Talk To Our Team
-            </a>
-            <a href="/services" className="creative-btn creative-btn-secondary">
-              Explore Services
-            </a>
+            <motion.div 
+              className="hero-badge"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <span className="badge-dot"></span>
+              About Us
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.7 }}
+            >
+              Building Technology Solutions Since 2013
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.7 }}
+            >
+              We bring software development, product distribution, implementation, 
+              and support together to help businesses manage their operations with 
+              greater scale and confidence.
+            </motion.p>
+
+            <motion.div
+              className="modern-hero-actions"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+            >
+              <a href="#journey" className="creative-btn creative-btn-primary">
+                Our Journey
+              </a>
+              <a href="/#contact" className="creative-btn creative-btn-secondary">
+                Contact Us
+              </a>
+            </motion.div>
+
+            {/* Inline Stats */}
+            <motion.div 
+              className="hero-stats-row"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+            >
+              <div className="hero-stat-item">
+                <strong><AnimatedCounter value={yearsOfExp} suffix="+" duration={2} /></strong>
+                <span>Years Exp.</span>
+              </div>
+              <div className="hero-stat-item">
+                <strong><AnimatedCounter value={500} suffix="+" duration={2.5} /></strong>
+                <span>Clients</span>
+              </div>
+              <div className="hero-stat-item">
+                <strong><AnimatedCounter value={100} suffix="+" duration={2} /></strong>
+                <span>Partners</span>
+              </div>
+              <div className="hero-stat-item">
+                <strong>24/7</strong>
+                <span>Support</span>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Right Visual Column */}
+          <motion.div 
+            className="modern-hero-visual"
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
+            <div className="visual-glass-card">
+              <img src={storyImg.src} alt="Landmark Techedge Journey" className="hero-3d-illustration" />
+              
+              {/* Decorative floating elements */}
+              <motion.div 
+                className="floating-badge badge-top-right"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Target size={20} color="#3b82f6" />
+                <span>Innovation</span>
+              </motion.div>
+              <motion.div 
+                className="floating-badge badge-bottom-left"
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                <Users size={20} color="#ec4899" />
+                <span>Growth</span>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Stats Section */}
@@ -101,7 +167,9 @@ export default function AboutPage() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: i * 0.2 }}
           >
-            <div className="stat-value">{item.value}</div>
+            <div className="stat-value">
+              {item.isCounter ? <AnimatedCounter value={item.value as number} suffix="+" /> : item.value}
+            </div>
             <div className="stat-label">{item.label}</div>
           </motion.div>
         ))}
@@ -117,7 +185,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
         >
           <span className="hero-eyebrow">Our Story</span>
-          <h2>Built in Pune, shaped by two decades of client delivery.</h2>
+          <h2>Building Technology Solutions Since 2013</h2>
           <p>
             Landmark Techedge Pvt Ltd is leading Software Development and
             Distribution company which is vastly diversified and scaled to cover
@@ -139,7 +207,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8 }}
         >
           <div className="floating-illustration">
-            <img src={storyImg.src} alt="Our Story Journey" className="animated-3d-img" />
+            <img src={globalTechImg.src} alt="Global Technology Collaboration" className="animated-3d-img" />
           </div>
         </motion.div>
       </section>
