@@ -17,7 +17,7 @@ let aboutContent = fs.readFileSync(aboutFile, 'utf8');
 aboutContent = aboutContent.replace(/Established in 2003/g, 'Established in 2013');
 aboutContent = aboutContent.replace(/Since 2014/g, 'Since 2013');
 aboutContent = aboutContent.replace(/"2014"/g, '"2013"');
-aboutContent = aboutContent.replace(/"20\+"/g, '"13+"');
+
 
 fs.writeFileSync(aboutFile, aboutContent, 'utf8');
 

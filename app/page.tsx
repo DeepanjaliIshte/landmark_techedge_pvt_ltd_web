@@ -6,12 +6,13 @@ import bizplusErpLogo from "./img/bizplus_erp.png";
 import trioImage from "./img/Trio-corporation.jpg";
 import logo from "./img/LTPLLogo.png";
 import ContactSection from "./components/ContactSection";
+import { yearsExperience } from "./constants/experience";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 const demoHref = "https://calendly.com/bizpluscrm/freedemo";
 
 const trustPoints = [
-  { title: "13+ Years", text: "Industry Experience", icon: "icon-star" },
+  { title: `${yearsExperience}+ Years`, text: "Industry Experience", icon: "icon-star" },
   { title: "ERP & SaaS", text: "Software Company", icon: "icon-building" },
   { title: "Serving Businesses", text: "Across India", icon: "icon-users" },
   { title: "Dedicated Support &", text: "Implementation Team", icon: "icon-headset" },
@@ -76,7 +77,7 @@ const whyChooseUs = [
     title: "Industry Experience",
     icon: "icon-clock",
     text:
-      "With more than 13 years of experience in the software industry, we understand the operational challenges businesses face and deliver practical technology solutions that improve efficiency and business growth.",
+        `With more than ${yearsExperience} years of experience in the software industry, we understand the operational challenges businesses face and deliver practical technology solutions that improve efficiency and business growth.`
   },
   {
     title: "Complete Business Automation",
@@ -111,7 +112,7 @@ const whyChooseUs = [
 ];
 
 const strengths = [
-  "13+ Years Industry Experience",
+  `${yearsExperience}+ Years Industry Experience`,
   "ERP & CRM Specialists",
   "Manufacturing & Healthcare Solutions",
   "Reliable Technical Support",
@@ -256,7 +257,7 @@ export default function Page() {
               <img src={logo.src} alt="LandMark TechEdge logo" />
             </div>
             <div className="floating-stat stat-a">
-              <strong>13+</strong>
+              <strong>{yearsExperience}+</strong>
               years experience
             </div>
 
