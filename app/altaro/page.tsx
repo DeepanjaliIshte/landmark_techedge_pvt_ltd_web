@@ -202,15 +202,7 @@ export default function AltaroPage() {
         </section>
       </FadeInSection>
 
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms & Conditions</a>
-          <a href="/Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>

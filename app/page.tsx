@@ -206,7 +206,8 @@ export default function Page() {
           <a href="https://x.com/LTechedge">X</a>
           <a href="https://in.linkedin.com/company/landmark-techedge-pvt-ltd">LinkedIn</a>
         </div>
-      </div>*/}
+      </div>*/}
+
       <section id="home" className="hero hero-blue">
         <div className="hero-orbits" aria-hidden="true">
           <span />
@@ -294,7 +295,7 @@ export default function Page() {
                     <b key={point}>{point}</b>
                   ))}
                 </div>
-                <a className="button button-primary" href={product.name.includes("Altaro") ? "/altaro" : product.href} style={{ marginTop: '12px' }}>
+                <a className="button button-primary" href={product.name.includes("Altaro") ? "/altaro" : product.href} style={{ marginTop: 'auto' }}>
                   {product.action}
                 </a>
               </div>
@@ -394,7 +395,7 @@ export default function Page() {
           </p>
           <div className="cta-buttons">
             <a href={demoHref} className="button button-primary">
-              Talk to Our Experts
+              Talk To Our Experts
             </a>
             <a href="#contact" className="button button-secondary">
               Request Free Demo
@@ -411,39 +412,46 @@ export default function Page() {
             See what our clients say about the software solutions and support provided by Landmark Techedge Pvt. Ltd.
           </p>
         </div>
-        <div style={{ width: '100%', overflow: 'hidden', paddingBottom: '20px' }}>
-          <motion.div
-            animate={shouldReduceMotion ? undefined : { x: ["0%", "calc(-50% - 12px)"] }}
-            transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+        <div className="testimonials-carousel-wrapper" style={{ width: '100%', overflow: 'hidden', padding: '20px 0 40px' }}>
+          <div
             style={{ display: 'inline-flex', gap: '24px', paddingLeft: '24px' }}
             className="auto-scroll-track"
           >
             {[...testimonials, ...testimonials].map((item, i) => (
-              <article className="testimonial-card" key={`${item.name}-${i}`} style={{ width: '85vw', maxWidth: '380px', flexShrink: 0, whiteSpace: 'normal', display: 'flex', flexDirection: 'column' }}>
-                <p style={{ flexGrow: 1 }}>“{item.quote}”</p>
+              <article className="testimonial-card hover-zoom-card" key={`${item.name}-${i}`} style={{ width: '85vw', maxWidth: '380px', flexShrink: 0, whiteSpace: 'normal', display: 'flex', flexDirection: 'column' }}>
+                <p style={{ flexGrow: 1 }}>"{item.quote}"</p>
                 <h3>{item.name}</h3>
                 <small>{item.role}</small>
               </article>
             ))}
-          </motion.div>
+          </div>
           <style>{`
+            @keyframes marquee {
+              0% { transform: translateX(0%); }
+              100% { transform: translateX(calc(-50% - 12px)); }
+            }
+            .auto-scroll-track {
+              animation: marquee 40s linear infinite;
+            }
             .auto-scroll-track:hover {
-              animation-play-state: paused !important;
+              animation-play-state: paused;
+            }
+            .hover-zoom-card {
+              transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+              position: relative;
+            }
+            .hover-zoom-card:hover {
+              transform: scale(1.05);
+              box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+              border-color: #38bdf8;
+              z-index: 10;
             }
           `}</style>
         </div>
       </section>
 
       <ContactSection />
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms & Conditions</a>
-          <a href="/Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>

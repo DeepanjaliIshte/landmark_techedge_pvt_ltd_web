@@ -1,6 +1,7 @@
 "use client";
 
 import logo from "../img/LTPLLogo.png";
+import { usePathname } from "next/navigation";
 
 const altaroGroups = [
   {
@@ -29,6 +30,13 @@ const komalPages = [
 ];
 
 export default function SiteHeader() {
+  const pathname = usePathname() || "";
+
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+  };
+
   return (
     <>
       <header className="site-header">
@@ -36,12 +44,12 @@ export default function SiteHeader() {
           <img src={logo.src} alt="LandMark TechEdge" />
         </a>
         <nav className="site-nav" aria-label="Primary navigation">
-          <a href="/">Home</a>
-          <a href="/about">About Us</a>
-          <a href="/services">Services</a>
+          <a href="/" className={isActive("/") ? "active" : ""}>Home</a>
+          <a href="/about" className={isActive("/about") ? "active" : ""}>About Us</a>
+          <a href="/services" className={isActive("/services") ? "active" : ""}>Services</a>
 
           <div className="nav-dropdown">
-            <a className="nav-dropdown-trigger" href="/altaro" aria-haspopup="true">
+            <a className={`nav-dropdown-trigger ${isActive("/altaro") ? "active" : ""}`} href="/altaro" aria-haspopup="true">
               Altaro
               <span className="nav-caret" aria-hidden="true" />
             </a>
@@ -54,7 +62,7 @@ export default function SiteHeader() {
                   </a>
                   <div className="nav-submenu" role="menu">
                     {group.items.map((item) => (
-                      <a href={item.href} key={item.label}>
+                      <a href={item.href} key={item.label} className={pathname === item.href ? "active" : ""}>
                         {item.label}
                       </a>
                     ))}
@@ -64,15 +72,15 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <a href="/bizpluscrm">BizplusCRM</a>
-          <a href="/bizpluserp">BizplusERP</a>
-          <a href="/ai-ml">AI-ML</a>
-          <a href="/ivr">IVR</a>
-          <a href="/trio-hims">Trio HIMS</a>
+          <a href="/bizpluscrm" className={isActive("/bizpluscrm") ? "active" : ""}>BizplusCRM</a>
+          <a href="/bizpluserp" className={isActive("/bizpluserp") ? "active" : ""}>BizplusERP</a>
+          <a href="/ai-ml" className={isActive("/ai-ml") ? "active" : ""}>AI-ML</a>
+          <a href="/ivr" className={isActive("/ivr") ? "active" : ""}>IVR</a>
+          <a href="/trio-hims" className={isActive("/trio-hims") ? "active" : ""}>Trio HIMS</a>
 
-          <a href="/reseller-program">Distributor/Reseller</a>
+          <a href="/reseller-program" className={isActive("/reseller-program") ? "active" : ""}>Distributor/Reseller</a>
 
-          <a href="/#contact">Contact Us</a>
+          <a href="/contact" className={isActive("/contact") ? "active" : ""}>Contact Us</a>
         </nav>
       </header>
     </>

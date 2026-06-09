@@ -8,6 +8,15 @@ import iotdevImg from "../img/IOTDev.jpg";
 import plcAutoImg from "../img/PLCAUto.jpg";
 import aidevImg from "../img/AIDev.jpg";
 
+import client1 from "../img/client-1.png";
+import client2 from "../img/client-2.png";
+import client3 from "../img/client-3.png";
+import client4 from "../img/client-4.png";
+import client5 from "../img/client-5.png";
+import client6 from "../img/client-6.png";
+import cssImg from "../img/CSS.png";
+import sqlServerImg from "../img/SQL-Server.png";
+
 const services = [
   {
     name: "Mobile Apps",
@@ -154,6 +163,62 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <section className="technologies-section" style={{ padding: '80px 24px', background: '#fff' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', textAlign: 'center' }}>
+          <span className="eyebrow">Technologies We Use</span>
+          <h2 style={{ marginBottom: '48px', fontSize: '32px' }}>Modern Tech Stack</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '32px' }}>
+            {[
+              { name: "Next.js", src: "https://cdn.simpleicons.org/nextdotjs/000000" },
+              { name: "Python", src: "https://cdn.simpleicons.org/python/3776AB" },
+              { name: "CSS", src: cssImg.src },
+              { name: "HTML5", src: "https://cdn.simpleicons.org/html5/E34F26" },
+              { name: "TypeScript", src: "https://cdn.simpleicons.org/typescript/3178C6" },
+              { name: "WordPress", src: "https://cdn.simpleicons.org/wordpress/21759B" },
+              { name: "SQLite", src: "https://cdn.simpleicons.org/sqlite/003B57" },
+              { name: "SQL Server", src: sqlServerImg.src },
+              { name: "Angular", src: "https://cdn.simpleicons.org/angular/DD0031" },
+              { name: ".NET", src: "https://cdn.simpleicons.org/dotnet/512BD4" },
+              { name: "Flutter", src: "https://cdn.simpleicons.org/flutter/02569B" }
+            ].map(tech => (
+              <div key={tech.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', minWidth: '80px' }}>
+                <div style={{ width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+                  <img src={tech.src} alt={tech.name} style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+                </div>
+                <span style={{ fontSize: '14px', fontWeight: 500, color: '#475569' }}>{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="clients-section" style={{ padding: '80px 24px', background: '#f8fafc', borderTop: '1px solid #e2e8f0' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', textAlign: 'center' }}>
+          <span className="eyebrow">Our Clients</span>
+          <h2 style={{ marginBottom: '48px', fontSize: '32px' }}>Trusted By Industry Leaders</h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: '48px' }}>
+            {[client1, client2, client3, client4, client5, client6].map((client, idx) => (
+              <img 
+                key={idx} 
+                src={client.src} 
+                alt={`Client ${idx + 1}`} 
+                style={{ 
+                  height: '60px', 
+                  width: 'auto', 
+                  maxWidth: '200px',
+                  objectFit: 'contain',
+                  filter: 'grayscale(100%) opacity(70%)', 
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
+                }} 
+                onMouseOver={e => { e.currentTarget.style.filter = 'grayscale(0%) opacity(100%)'; }} 
+                onMouseOut={e => { e.currentTarget.style.filter = 'grayscale(100%) opacity(70%)'; }} 
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="services-cta">
         <div className="services-cta-content">
           <h2>Ready to turn an operation problem into a working system?</h2>
@@ -176,15 +241,7 @@ export default function ServicesPage() {
 
       <ContactSection />
 
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms & Conditions</a>
-          <a href="/Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>

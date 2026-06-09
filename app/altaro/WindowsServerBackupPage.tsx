@@ -149,9 +149,9 @@ export default function WindowsServerBackupPage() {
               className="visual-card"
               animate={shouldReduceMotion ? undefined : { y: [0, -15, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.8)', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', borderRadius: '24px', boxShadow: '0 24px 60px rgba(15,23,42,0.1)' }}
+              style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.8)', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '16px', borderRadius: '24px', boxShadow: '0 24px 60px rgba(15,23,42,0.1)' }}
             >
-              <img src={altaroLogo.src} alt="Physical Server Backup" style={{ maxWidth: '100%', height: 'auto' }} />
+              <img src={altaroLogo.src} alt="Physical Server Backup" style={{ maxWidth: '100%', height: 'auto', alignSelf: 'center', margin: '0 auto', display: 'block', mixBlendMode: 'multiply' }} />
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(139,92,246,0.1)', padding: '8px 16px', borderRadius: '99px', border: '1px solid rgba(139,92,246,0.2)' }}>
                 <span style={{ fontSize: '12px', fontWeight: 800, color: '#8b5cf6', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Free</span>
                 <strong style={{ fontSize: '14px', color: '#0f172a' }}>Physical Server Backup</strong>
@@ -275,15 +275,7 @@ export default function WindowsServerBackupPage() {
         </section>
       </FadeInSection>
 
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms & Conditions</a>
-          <a href="/Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import logo from "../img/LTPLLogo.png";
 import AIMLImg from "../img/mature_ai_hero.png";
 import { useState, useEffect, useRef } from "react";
+import { ChevronDown } from "lucide-react";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 
@@ -118,9 +119,30 @@ export default function AiMlPage() {
         </section>
       </FadeInSection>
 
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '0 0 4rem 0' }}>
+        <a href="#features" style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          width: '60px', 
+          height: '60px', 
+          borderRadius: '50%', 
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          color: '#3b82f6',
+          textDecoration: 'none',
+          boxShadow: '0 4px 14px rgba(59, 130, 246, 0.1)',
+          transition: 'transform 0.3s ease, background 0.3s ease'
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(5px)'; e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.2)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)'; }}
+        >
+          <ChevronDown size={32} />
+        </a>
+      </div>
+
       {/* Key Features */}
       <FadeInSection>
-        <section className="about">
+        <section id="features" className="about">
           <div className="section-heading">
             <span className="eyebrow">Capabilities</span>
             <h2>Key Features</h2>
@@ -250,8 +272,8 @@ export default function AiMlPage() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <h3 style={{ margin: 0, fontSize: '18px', color: openFAQ === idx ? 'var(--blue)' : 'var(--ink)' }}>{item.q}</h3>
-                  <span style={{ fontSize: '24px', fontWeight: 300, color: 'var(--blue)', transform: openFAQ === idx ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}>
-                    +
+                  <span style={{ display: 'flex', alignItems: 'center', color: 'var(--blue)', transform: openFAQ === idx ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}>
+                    <ChevronDown size={24} />
                   </span>
                 </div>
                 <div style={{ 
@@ -338,15 +360,7 @@ export default function AiMlPage() {
       </FadeInSection>
 
       {/* Footer */}
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="Privacy.html">Privacy Policy</a>
-          <a href="Terms.html">Terms &amp; Conditions</a>
-          <a href="Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>

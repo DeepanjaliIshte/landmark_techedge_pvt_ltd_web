@@ -183,13 +183,38 @@
 }
 
 .creative-section {
-  padding: 1.5rem 2rem;
+  padding: 5rem 4rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 4rem auto;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
   text-align: left;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  border-radius: 3rem;
+  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.creative-section:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px -20px rgba(15, 23, 42, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.creative-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.1), transparent 50%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .creative-section.reverse {
@@ -197,12 +222,15 @@
 }
 
 .creative-section-content {
-  flex: 1;
+  flex: 1.1;
+  position: relative;
+  z-index: 10;
 }
 
 .creative-section-image {
-  flex: 1;
+  flex: 0.9;
   position: relative;
+  z-index: 10;
 }
 
 .image-glass-wrapper {
@@ -225,17 +253,22 @@
 }
 
 .creative-section h2 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  color: #0f172a;
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .creative-section p {
-  font-size: 1.125rem;
-  color: #475569;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  line-height: 1.8;
   margin-bottom: 1.5rem;
+  font-weight: 300;
 }
 
 .values-grid {
@@ -326,83 +359,27 @@
   }
 }
 
-/* 3D Isometric Icon Styles */
-.isometric-container {
+/* 3D Illustration Styles */
+.floating-illustration {
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
   width: 100%;
-  height: 300px;
-}
-
-.isometric-icon {
+  height: 350px;
   position: relative;
-  width: 160px;
-  height: 160px;
-  transform-style: preserve-3d;
-  transform: rotateX(60deg) rotateZ(45deg);
-  animation: float-3d 4s ease-in-out infinite alternate;
 }
 
-@keyframes float-3d {
-  0% { transform: rotateX(60deg) rotateZ(45deg) translateZ(0); }
-  100% { transform: rotateX(60deg) rotateZ(45deg) translateZ(30px); }
-}
-
-.isometric-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
+.animated-3d-img {
+  max-width: 300px;
+  max-height: 300px;
   width: 100%;
-  height: 100%;
-  border-radius: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+  animation: float-img 6s ease-in-out infinite alternate;
 }
 
-/* Story Icon Layers */
-.story-icon .isometric-layer:nth-child(1) { transform: translateZ(0px); background: rgba(59, 130, 246, 0.1); border: 2px solid rgba(59, 130, 246, 0.2); }
-.story-icon .isometric-layer:nth-child(2) { transform: translateZ(10px); background: rgba(59, 130, 246, 0.2); border: 2px solid rgba(59, 130, 246, 0.3); }
-.story-icon .isometric-layer:nth-child(3) { transform: translateZ(20px); background: rgba(59, 130, 246, 0.3); border: 2px solid rgba(59, 130, 246, 0.4); }
-.story-icon .isometric-layer:nth-child(4) { 
-  transform: translateZ(30px); 
-  background: linear-gradient(135deg, #3b82f6, #2563eb); 
-  border: 2px solid #60a5fa;
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.5);
-  color: white;
-}
-
-/* Vision Icon Layers */
-.vision-icon .isometric-layer:nth-child(1) { transform: translateZ(0px); background: rgba(167, 139, 250, 0.1); border: 2px solid rgba(167, 139, 250, 0.2); }
-.vision-icon .isometric-layer:nth-child(2) { transform: translateZ(10px); background: rgba(167, 139, 250, 0.2); border: 2px solid rgba(167, 139, 250, 0.3); }
-.vision-icon .isometric-layer:nth-child(3) { transform: translateZ(20px); background: rgba(167, 139, 250, 0.3); border: 2px solid rgba(167, 139, 250, 0.4); }
-.vision-icon .isometric-layer:nth-child(4) { 
-  transform: translateZ(30px); 
-  background: linear-gradient(135deg, #a855f7, #7e22ce); 
-  border: 2px solid #d8b4fe;
-  box-shadow: 0 0 40px rgba(168, 85, 247, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.5);
-  color: white;
-}
-
-/* Mission Icon Layers */
-.mission-icon .isometric-layer:nth-child(1) { transform: translateZ(0px); background: rgba(236, 72, 153, 0.1); border: 2px solid rgba(236, 72, 153, 0.2); }
-.mission-icon .isometric-layer:nth-child(2) { transform: translateZ(10px); background: rgba(236, 72, 153, 0.2); border: 2px solid rgba(236, 72, 153, 0.3); }
-.mission-icon .isometric-layer:nth-child(3) { transform: translateZ(20px); background: rgba(236, 72, 153, 0.3); border: 2px solid rgba(236, 72, 153, 0.4); }
-.mission-icon .isometric-layer:nth-child(4) { 
-  transform: translateZ(30px); 
-  background: linear-gradient(135deg, #ec4899, #be185d); 
-  border: 2px solid #f9a8d4;
-  box-shadow: 0 0 40px rgba(236, 72, 153, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.5);
-  color: white;
-}
-
-/* Icon rotation to face the viewer correctly inside the isometric space */
-.isometric-layer svg {
-  width: 64px;
-  height: 64px;
-  transform: rotateZ(-45deg) rotateY(0deg) rotateX(0deg);
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+@keyframes float-img {
+  0% { transform: translateY(0px) scale(1); filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3)); }
+  100% { transform: translateY(-20px) scale(1.03); filter: drop-shadow(0 30px 50px rgba(59, 130, 246, 0.4)); }
 }

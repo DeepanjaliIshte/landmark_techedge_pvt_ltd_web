@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

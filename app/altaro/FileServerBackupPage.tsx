@@ -2,6 +2,9 @@
 
 import React from "react";
 import altaroLogo from "../img/altaro2.png";
+import fsDashboardImg from "../img/fs_dashboard_3d.png";
+import continuousProtectionImg from "../img/continuous_protection_3d.png";
+import backInTimeImg from "../img/back_in_time_3d.png";
 import ContactSection from "../components/ContactSection";
 import FadeInSection from "../components/FadeInSection";
 import { motion, useReducedMotion } from "framer-motion";
@@ -91,7 +94,7 @@ export default function FileServerBackupPage() {
             animate={shouldReduceMotion ? undefined : { opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            <img src="/assets/img/Altaro/fs-1.png" alt="Altaro Backup FS Dashboard" style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px', boxShadow: '0 24px 60px rgba(15,23,42,0.1)' }} />
+            <img src={fsDashboardImg.src} alt="Altaro Backup FS Dashboard" style={{ maxWidth: '100%', height: 'auto', filter: 'drop-shadow(0 24px 60px rgba(15,23,42,0.2))' }} />
           </motion.div>
         </div>
       </section>
@@ -101,7 +104,7 @@ export default function FileServerBackupPage() {
         <section style={{ padding: '80px 24px', background: '#fff' }}>
           <div style={{ maxWidth: '1180px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center' }}>
             <div className="impact-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 12px 40px rgba(0,0,0,0.08)' }}>
-              <img src="/assets/img/Altaro/fs-2.png" alt="Continuous Data Protection" style={{ width: '100%', height: 'auto' }} />
+              <img src={continuousProtectionImg.src} alt="Continuous Data Protection" style={{ width: '100%', height: 'auto', padding: '24px' }} />
             </div>
             <div>
               <h2 style={{ fontSize: '36px', color: '#0f172a', margin: '16px 0 24px', lineHeight: 1.2 }}>Continuous Data Protection</h2>
@@ -129,7 +132,7 @@ export default function FileServerBackupPage() {
               </p>
             </div>
             <div className="impact-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 12px 40px rgba(0,0,0,0.08)' }}>
-              <img src="/assets/img/Altaro/fs-3.png" alt="BackIn Time" style={{ width: '100%', height: 'auto' }} />
+              <img src={backInTimeImg.src} alt="BackIn Time" style={{ width: '100%', height: 'auto', padding: '24px' }} />
             </div>
           </div>
         </section>
@@ -143,7 +146,7 @@ export default function FileServerBackupPage() {
               <h2>More Features</h2>
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '24px' }}>
               {[
                 {
                   title: "Save Space",
@@ -190,7 +193,7 @@ export default function FileServerBackupPage() {
                   text: "Fully supports Windows server operating systems including Microsoft SBS. Ideal for Small & Mid-Sized Businesses.",
                 },
               ].map((item, i) => (
-                <div key={i} className="impact-card" style={{ borderRadius: '20px', padding: '32px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                <div key={i} className="impact-card" style={{ flex: '0 1 calc(33.333% - 16px)', minWidth: '300px', borderRadius: '20px', padding: '32px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
                   <h3 style={{ fontSize: '18px', color: '#0f172a', marginBottom: '12px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#3b82f6', marginTop: '6px', flexShrink: 0 }}></div>
                     {item.title}
@@ -209,15 +212,7 @@ export default function FileServerBackupPage() {
         </section>
       </FadeInSection>
 
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms & Conditions</a>
-          <a href="/Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>

@@ -134,7 +134,7 @@ export default function BizPlusErpPage() {
               className="visual-card"
               animate={shouldReduceMotion ? undefined : { y: [0, -15, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              style={{ background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.8)', padding: '10px', boxShadow: '0 24px 60px rgba(15,23,42,0.1)' }}
+              style={{ background: 'linear-gradient(135deg, #7dd3fc, #0ea5e9)', backdropFilter: 'blur(16px)', border: '1px solid #bae6fd', padding: '24px', borderRadius: '24px', boxShadow: '0 24px 60px rgba(14, 165, 233, 0.25)' }}
             >
               <img src={bizplusLogo.src} alt="BizPlus ERP" style={{ maxWidth: '100%', height: 'auto', borderRadius: '16px' }} />
             </motion.div>
@@ -401,15 +401,7 @@ export default function BizPlusErpPage() {
 
       
       <FadeInSection>
-        <footer className="footer">
-          <h2>LandMark TechEdge</h2>
-          <div>
-            <a href="/Privacy.html">Privacy Policy</a>
-            <a href="/Terms.html">Terms & Conditions</a>
-            <a href="/Refund.html">Refund Policy</a>
-          </div>
-          <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-        </footer>
+        
       </FadeInSection>
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">

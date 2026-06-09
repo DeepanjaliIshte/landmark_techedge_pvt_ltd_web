@@ -6,6 +6,9 @@ import ContactSection from "../components/ContactSection";
 import "./about.css";
 
 import logo2 from "../img/LTPLLogo.png";
+import storyImg from "../img/about-story-3d.png";
+import missionImg from "../img/about-mission-3d.png";
+import visionImg from "../img/about-vision-3d.png";
 
 const whatsappHref = "https://api.whatsapp.com/send?phone=919370943551&text=Hi";
 
@@ -135,15 +138,8 @@ export default function AboutPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="isometric-container">
-            <div className="isometric-icon story-icon">
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer">
-                <Users size={64} />
-              </div>
-            </div>
+          <div className="floating-illustration">
+            <img src={storyImg.src} alt="Our Story Journey" className="animated-3d-img" />
           </div>
         </motion.div>
       </section>
@@ -174,15 +170,8 @@ export default function AboutPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="isometric-container">
-            <div className="isometric-icon vision-icon">
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer">
-                <Eye size={64} />
-              </div>
-            </div>
+          <div className="floating-illustration">
+            <img src={visionImg.src} alt="Our Vision Ecosystem" className="animated-3d-img" />
           </div>
         </motion.div>
       </section>
@@ -211,15 +200,8 @@ export default function AboutPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="isometric-container">
-            <div className="isometric-icon mission-icon">
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer"></div>
-              <div className="isometric-layer">
-                <Target size={64} />
-              </div>
-            </div>
+          <div className="floating-illustration">
+            <img src={missionImg.src} alt="Our Mission Goals" className="animated-3d-img" />
           </div>
         </motion.div>
       </section>
@@ -282,15 +264,7 @@ export default function AboutPage() {
 
       <ContactSection />
 
-      <footer className="footer">
-        <h2>LandMark TechEdge</h2>
-        <div>
-          <a href="/Privacy.html">Privacy Policy</a>
-          <a href="/Terms.html">Terms & Conditions</a>
-          <a href="/Refund.html">Refund Policy</a>
-        </div>
-        <p>Copyright LandMark TechEdge Pvt. Ltd. All Rights Reserved.</p>
-      </footer>
+      
 
       <a className="whatsapp-float" href={whatsappHref} aria-label="Chat with us on WhatsApp">
         <span className="tooltip">Chat with us! 👋</span>
